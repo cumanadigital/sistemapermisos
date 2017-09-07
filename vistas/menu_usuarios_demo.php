@@ -30,6 +30,31 @@ $cargousuario = $_SESSION["sesion_cargo"];
 7:Dirección
 
 -->
+
+<!-- 
+// ADMIN - GESTION INTERNA
+// ###                                                                           
+ -->
+<?php if ($nivelusuario=='root') {?>     <!--0:Admin,-->
+<!--USUARIOS DE INFORMATICA-->
+<li class="treeview">
+    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Administrar</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li id="menu_admin_planteles"><a href="javascript:void(0);"></i><i class="fa  fa-file-o"></i> <span>Planteles</span></a></li>
+    </ul>
+</li>
+
+<!--PERFIL DE USUARIOS-->
+<li class="treeview">
+    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li id="menu_admin_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
+        <li id="menu_admin_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
+    </ul>
+</li>
+<?php }?>
+
+
 <!-- 
 // ADMIN - INFORMATICA
 // ###                                                                           
