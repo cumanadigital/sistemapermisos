@@ -329,15 +329,24 @@
 	 // #     #  #######  #     #   #####  
 	 // 
 	 // 
-	// ADMIN - GESTION INTERNA
-	$('#menu_admin_planteles').on("click", function(event){
+	 // 
+	// ROOT
+	// ######  ####### ####### #######
+	// #     # #     # #     #    #
+	// #     # #     # #     #    #
+	// ######  #     # #     #    #
+	// #   #   #     # #     #    #
+	// #    #  #     # #     #    #
+	// #     # ####### #######    #
+	
+	$('#menu_admin_registrar_planteles').on("click", function(event){
 		console.log($(this).attr('id') + " --> " +  $(this).text());
 	});
 
-	// ADMIN - GESTION INTERNA - ADMINISTRAR - PERIODOS ACADEMICOS
-	$("#menu_admin_planteles").on("click", function(event){
-		var vista = 'vistas/vista_admin_periodo.php';
-		var controlador = 'controladores/controller.admin.periodos.js';
+	// ADMIN - ROOT - ADMINISTRAR - PLANTELES
+	$("#menu_admin_registrar_planteles").on("click", function(event){
+		var vista = 'vistas/vista_admin_registrar_planteles.php';
+		var controlador = 'controladores/controller.admin.registrar.planteles.js';
 		var contenedor = '';
 		var subnivel= 'Administrar - ' + $(this).text();
 		var parametros = 'dptouser='+dptouser + '&cargouser='+cargouser + '&userestatus='+userestatus +  '&userced='+userced + '&';
