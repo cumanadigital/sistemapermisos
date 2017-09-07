@@ -272,6 +272,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                                         <option value="licencia" >Licencias</option>
                                         
                                         <option value="admin" >Informática y Sistemas</option>
+                                        <option value="root" >Super Admin</option>
 
                                     </select>
                                   </div>
