@@ -133,12 +133,32 @@
         return {};
     }
 
+<<<<<<< HEAD
+=======
+    // function actionFormatter(value,row) {
+    //   // console.info(row); 
+    //     return [
+    //         '<a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i></a>  ',
+    //         '<a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i></a>  ',
+    //         '<a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i></a>',
+    //     ].join('');
+    // }
+
+            // '  <button type="button" class="btn btn-default">Seleccione</button>',
+
     function actionFormatter(value,row) {
       // console.info(row); 
         return [
-            '<a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i></a>  ',
-            '<a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i></a>  ',
-            ' <a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i></a>',
+            '<div class="btn-group">',
+            '  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">',
+            '    Seleccione <span class="caret"></span>',
+            '  </button>',
+            '  <ul class="dropdown-menu pull-right" role="menu">',
+            '    <li><a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i>Ver Registro</a></li>',
+            '    <li><a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i>Modificar Registro</a></li>',
+            '    <li><a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i>Eliminar Registro</a></li>',
+            '  </ul>',
+            '</div>'
         ].join('');
     }
 
