@@ -138,30 +138,28 @@
     //     return [
     //         '<a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i></a>  ',
     //         '<a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i></a>  ',
-    //         ' <a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i></a>',
+    //         '<a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i></a>',
     //     ].join('');
     // }
 
-    // function actionFormatter_111(value,row) {
-    //     return [
-    //         '<div class="btn-group">',
-    //         '  <button type="button" class="btn btn-default">Action</button>',
-    //         '  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">',
-    //         '    <span class="caret"></span>',
-    //         '    <span class="sr-only">Toggle Dropdown</span>',
-    //         '  </button>',
-    //         '  <ul class="dropdown-menu" role="menu">',
-    //         '    <li><a href="#">Action</a></li>',
-    //         '    <li><a href="#">Another action</a></li>',
-    //         '    <li><a href="#">Something else here</a></li>',
-    //         '    <li class="divider"></li>',
-    //         '    <li><a href="#">Separated link</a></li>',
-    //         '  </ul>',
-    //         '</div>'
-    //     ].join('');
-    // }
-    
+            // '  <button type="button" class="btn btn-default">Seleccione</button>',
+
     function actionFormatter(value,row) {
+        return [
+            '<div class="btn-group">',
+            '  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">',
+            '    Seleccione <span class="caret"></span>',
+            '  </button>',
+            '  <ul class="dropdown-menu pull-right" role="menu">',
+            '    <li><a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i>Ver Registro</a></li>',
+            '    <li><a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i>Modificar Registro</a></li>',
+            '    <li><a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i>Eliminar Registro</a></li>',
+            '  </ul>',
+            '</div>'
+        ].join('');
+    }
+    
+    function actionFormatter_222(value,row) {
         return [
             '<div class="btn-group">',
             '  <button type="button" class="btn btn-default">Action</button>',
