@@ -5,7 +5,7 @@
     var API_URL =  "servicios/services.admin.periodos.php";
     var $table = $('#table').bootstrapTable({url: API_URL_periodos});
     
-    $modal = $('#modal_periodos').modal({show: false});
+    $modal = $('#modal_registros').modal({show: false});
     
     $alert = $('.alert').hide();
     
@@ -94,7 +94,7 @@
             var rango_fecha = $modal.find('input[name="txt_rango_fecha"]').val();
             
             if (nombre_periodo!='' && rango_fecha!= '') {
-              parametros = $("#form_modal_periodos").serialize() + '&accion='+ accion;
+              parametros = $("#form_modal_registros").serialize() + '&accion='+ accion;
               API_URL =  "servicios/services.admin.periodos.php";
               $.ajax({
                   url: API_URL + ($modal.data('id') || ''),

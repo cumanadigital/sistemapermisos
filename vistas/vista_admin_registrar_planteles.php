@@ -58,8 +58,8 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 <?php
 //
 ?>
-          <form class="form-horizontal" id="form_modal_periodos">	
-            <div id="modal_periodos" class="modal fade">
+          <form class="form-horizontal" id="form_modal_registros">	
+            <div id="modal_registros" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
                   
