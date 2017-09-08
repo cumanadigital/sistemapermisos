@@ -8,7 +8,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
     <div class="box box-solid box-primary ">
       <!--  BOX HEADER      -->
       <div class="box-header with-border">
-        <h3 class="box-title">Periodos</h3>
+        <h3 class="box-title">Planteles</h3>
         <div class="box-tools pull-right">
           <!--<button id="boton_minus_busqueda" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>-->
         </div><!-- /.box-tools -->
@@ -23,7 +23,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
           <div class="row"> 
             <div class="col-sm12 col-md-12">
               <p class="toolbar" id="toolbar1">
-                <a class="create btn btn-default" id="btn_crear_periodo"href="javascript:">Agregar Periodo</a>
+                <a class="create btn btn-default" id="btn_crear_periodo"href="javascript:">Agregar Plantel</a>
                 <span class="alert"></span>
               </p>
             </div> <!--// fin col-sm-->
@@ -65,7 +65,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                   
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Periodo</h4>
+                    <h4 class="modal-title">Plantel</h4>
                   </div>
                   
                   <div class="modal-body">

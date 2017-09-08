@@ -1,4 +1,4 @@
-    console.log("javascript - jefedpto admin periodos");
+    console.log("javascript - root registrar planteles");
 
     //var API_URL_periodos =  "servicios/services.periodos.php?accion=consultar_periodos";
     var API_URL_periodos =  "servicios/services.admin.periodos.php?accion=consultar_periodos";
@@ -59,7 +59,7 @@
             // desabilitamos el check de activo
             $("#txt_radio_estatus1").prop('disabled', true);
             // cambiamos el texto del boton enviar
-            $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Periodo");
+            $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Plantel");
             
             
             $modal.find('input[name="txt_codigo_periodo"]').val('');
@@ -249,8 +249,8 @@
           $("#txt_radio_estatus0").prop("checked" , true ) 
           $("#txt_radio_estatus0").prop('disabled', false);
           $("#txt_radio_estatus1").prop('disabled', true);
-          //$modal.find('button[name="btn_enviar_periodo"]').text("Modificar Periodo");
-          $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Periodo");
+          //$modal.find('button[name="btn_enviar_periodo"]').text("Modificar Plantel");
+          $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Plantel");
         }
 
         if (accion=='ver_periodos') {
@@ -319,7 +319,7 @@
             $("#txt_radio_estatus1" ).prop("checked" , true )
           }
 
-          $modal.find('button[name="btn_enviar_periodo"]').text("Ver Periodo");
+          $modal.find('button[name="btn_enviar_periodo"]').text("Ver Plantel");
           
         }
 
@@ -389,7 +389,7 @@
             $("#txt_radio_estatus1" ).prop("checked" , true )
           }
           
-          $modal.find('button[name="btn_enviar_periodo"]').text("Modificar Periodo");
+          $modal.find('button[name="btn_enviar_periodo"]').text("Modificar Plantel");
           
         }
         
