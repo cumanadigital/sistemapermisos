@@ -133,8 +133,6 @@
         return {};
     }
 
-<<<<<<< HEAD
-=======
     // function actionFormatter(value,row) {
     //   // console.info(row); 
     //     return [
@@ -143,8 +141,6 @@
     //         '<a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i></a>',
     //     ].join('');
     // }
-
-            // '  <button type="button" class="btn btn-default">Seleccione</button>',
 
     function actionFormatter(value,row) {
       // console.info(row); 
