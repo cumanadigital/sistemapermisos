@@ -31,28 +31,63 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
           
           <div class="row">
             <div class="col-sm12 col-md-12">
-              <table id="table"
+             <!--  <table id="table"
                     data-show-refresh="true"
                     data-show-columns="true"
                     data-search="true"
                     data-pagination="true"
                     data-query-params="queryParams"
                     data-toolbar="#toolbar1"
-              >
-                <thead>
-                  <tr>
-                   <!--<th data-field="state" data-checkbox="true"></th>-->
-                   <th data-field="id_periodo" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Id</th>
-                   <th data-field="nombre_periodo" data-filter-control="select" data-sortable="false" data-halign="center"  >Nombre</th>                   
-                   <!-- <th data-field="fecha_recaudo_ini" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Recaudo</th> -->
-                   <!-- <th data-field="fecha_recaudo_fin" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Recaudo</th> -->
-                   <th data-field="fecha_inicio" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Periodo</th>
-                   <th data-field="fecha_cierre" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Periodo</th>
-                   <th data-field="estatus" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center" data-formatter="StatusFormatter" >Estatus</th>
-                   <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Acción</th>
-                 </tr>
-                </thead>
-              </table>
+              > -->
+                <!-- <thead> -->
+                  <!-- <tr> -->
+                      <!--<th data-field="state" data-checkbox="true"></th>-->
+                   <!-- <th data-field="id_periodo" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Id</th> -->
+                   <!-- <th data-field="nombre_periodo" data-filter-control="select" data-sortable="false" data-halign="center"  >Nombre</th>                    -->
+                       <!-- <th data-field="fecha_recaudo_ini" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Recaudo</th> -->
+                       <!-- <th data-field="fecha_recaudo_fin" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Recaudo</th> -->
+                   <!-- <th data-field="fecha_inicio" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Periodo</th> -->
+                   <!-- <th data-field="fecha_cierre" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Periodo</th> -->
+                   <!-- <th data-field="estatus" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center" data-formatter="StatusFormatter" >Estatus</th> -->
+                   <!-- <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Acción</th> -->
+                 <!-- </tr> -->
+                <!-- </thead> -->
+              <!-- </table> -->
+
+                <table id="table"
+               data-show-refresh="true"
+               data-show-columns="true"
+               data-search="true"
+               data-show-export="true"
+               data-pagination="true"
+               data-page-list="[10, 25, 50, 5000, ALL]"
+               
+               data-query-params="queryParams"
+               data-toolbar=".toolbar"
+               data-filter-control="true">
+            <thead>
+            <tr>
+               <!-- <th data-field="name">Name</th>
+                <th data-field="stargazers_count">Stars</th>-->
+                <!--<th data-field="listado_nacionalidad">Nac</th>-->
+                 <!--<th data-field="state" data-checkbox="true"></th>-->
+                   <th data-field="plan_uid" data-filter-control="input" data-sortable="true" data-halign="center" data-align="center"  >Id</th>
+                   <th data-field="plan_codigodea" data-filter-control="input" data-sortable="true" data-halign="center"  >Cod Plantel</th>
+                   <th data-field="plan_nombre" data-filter-control="input" data-sortable="true" data-halign="center"  >Plantel</th>
+                   <th data-field="plan_codnomina"   data-filter-control="input" data-sortable="true" data-halign="center"  >Cod. Nómina</th>                   
+                   <th data-field="municipio_nombre"  data-filter-control="input" data-sortable="true" data-halign="center" data-align="center"  >Municipio</th>
+                   
+                   <th data-field="parroquia_nombre"  data-filter-control="input"  data-sortable="true" data-halign="center" data-align="center"  >Parroquia</th>
+                   <th data-field="md_nombre"   data-sortable="true" data-halign="center" data-align="center" data-filter-control="input"  >Modalidad</th>
+                
+                <th data-field="action"
+                    data-align="center"
+                    data-formatter="actionFormatter"
+                    data-events="actionEvents">Action</th>
+            </tr>
+            </thead>
+        </table>
+
             </div> <!--// fin col-sm-->
           </div><!--// fin row-->
 <?php

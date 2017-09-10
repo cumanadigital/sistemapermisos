@@ -1,9 +1,9 @@
     console.log("javascript - root registrar planteles");
 
     //var API_URL_periodos =  "servicios/services.periodos.php?accion=consultar_periodos";
-    var API_URL_periodos =  "servicios/services.admin.periodos.php?accion=consultar_periodos";
-    var API_URL =  "servicios/services.admin.periodos.php";
-    var $table = $('#table').bootstrapTable({url: API_URL_periodos});
+    var API_URL_planteles =  "servicios/services.admin.planteles.php?accion=consultar_periodos";
+    var API_URL =  "servicios/services.admin.planteles.php";
+    var $table = $('#table').bootstrapTable({url: API_URL_planteles});
     
     $modal = $('#modal_registros').modal({show: false});
     
@@ -92,7 +92,7 @@
             
             if (nombre_periodo!='' && rango_fecha!= '') {
               parametros = $("#form_modal_registros").serialize() + '&accion='+ accion;
-              API_URL =  "servicios/services.admin.periodos.php";
+              API_URL =  "servicios/services.admin.planteles.php";
               $.ajax({
                   url: API_URL + ($modal.data('id') || ''),
                   type: 'POST',
