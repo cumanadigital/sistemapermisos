@@ -11,7 +11,7 @@
 <?php require('../apiv3.0/funciones/postgres.class.php'); ?>
 <?php require('../apiv3.0/funciones/funciones3.0.php'); ?>
 <?php
-//{"txt_codigo_periodo":"","txt_nombre_periodo":"oswaldo","txt_rango_fecha":"01/07/2016 - 01/09/2016","txt_fecha_inicio":"","txt_fecha_cierre":"","txt_radio_estatus":"0","accion":"agregar_periodos"}
+//{"txt_codigo_periodo":"","txt_nombre_periodo":"oswaldo","txt_rango_fecha":"01/07/2016 - 01/09/2016","txt_fecha_inicio":"","txt_fecha_cierre":"","txt_radio_estatus":"0","accion":"agregar_registros"}
 	//echo DB_SERVER. "<br>";
 	//echo DB_NAME. "<br>";
 	//echo DB_USER. "<br>";
@@ -35,7 +35,7 @@
 	//		[txt_fecha_inicio] => 
 	//		[txt_fecha_cierre] => 
 	//		[txt_radio_estatus] => 0
-	//		[accion] => agregar_periodos
+	//		[accion] => agregar_registros
 	//		[token1] => 4f3:;EB15E360;¡BB!c1
 	//)
 	//	
@@ -44,13 +44,13 @@
 	//ver_arreglo($datos);
 	//die();
 	$fecha_registro = date("Y/m/d h:i:s");
-	$accion					=	$datos['accion']; //	agregar_periodos"
+	$accion					=	$datos['accion']; //	agregar_registros"
 	switch ($accion){
-		case 'consultar_periodos':
+		case 'consultar_registros':
 			consulta_periodos($datos);
 		break;
-		case 'agregar_periodos':
-			agregar_periodos($datos);
+		case 'agregar_registros':
+			agregar_registros($datos);
 		break;
 		case 'modificar_periodos':
 			modificar_periodos($datos);
@@ -247,7 +247,7 @@
 	}
 ?>
 <?php
-	function consultar_periodos_filtro($datos) {
+	function consultar_registros_filtro($datos) {
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 		$sql = "SELECT 	id_periodo, 
 										nombre_periodo, 
@@ -270,7 +270,7 @@
 	}
 ?>
 <?php
-	function agregar_periodos($datos) {
+	function agregar_registros($datos) {
 		// INICIA LA CONEXION CON EL SERVIDOR 
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 		//$data = split("@",$datos);
