@@ -91,6 +91,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 <?php
 //
 ?>
+          
           <form class="form-horizontal" id="form_modal_registros">	
             <div id="modal_registros" class="modal fade">
               <!-- <div class="modal-dialog"> -->
@@ -151,7 +152,329 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
               </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
           
-          </form>							
+          </form>	
+
+
+
+
+
+
+
+          <form class="form-horizontal" id="form_ventana_modal_asignar_autoridades" > 
+            <div id="ventana_modal_asignar_autoridades" class="modal fade">
+              <div class="modal-dialog" id="modal-dialog-xl">
+                <div class="modal-content">
+                  
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="fa fa-tag">&nbsp;</i>Asignar Autoridades - Director(a)</h4>
+                  </div>
+                  
+                  <div class="modal-body">
+                      <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                              <!-- //code -->
+                              <div class="form-group">
+                              <label for="txt_cedula_personal" class="col-sm-4 control-label">Cédula</label>
+                              <div class="col-sm-8">
+                              <input class="form-control" id="txt_id_jefeinmediato"  type="hidden" name="txt_id_jefeinmediato">
+                              <input class="form-control" id="txt_id_permiso"  type="hidden" name="txt_id_permiso">
+                              <input class="form-control" id="txt_id_personal" type="hidden" name="txt_id_personal">
+                              <div class="input-group">
+                                <input class="form-control" id="txt_cedula_personal" type="text"   name="txt_cedula_personal" placeholder="Buscar" >
+                                <span class="input-group-btn">
+                                  <button type="button" name="btn_buscar" id="btn_buscar" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                  <button type="button" name="btn_limpiar" id="btn_limpiar" class="btn btn-flat"><i class="fa  fa-trash"></i></button>
+                                </span>
+                              </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-8">
+                            <!-- //code -->
+                            <div class="form-group">
+                              <label for="txt_nombre_funcionario" class="col-sm-4 control-label">Apellido y Nombre</label>
+                              <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txt_nombre_funcionario" name="txt_nombre_funcionario"  placeholder="" readonly="readonly">
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                              <!-- //code -->
+                              <div class="form-group">
+                              <label for="txt_telefono_residencia" class="col-sm-4 control-label">Teléfono Residencial</label>
+                              <div class="col-sm-8">
+                                <input class="form-control" id="txt_telefono_residencia" type="tel" name="txt_telefono_residencia" placeholder="Ejm 0293-1234567" 
+                                pattern="\([0-9]{4}\)[-][0-9]{7}[0-9]{4}" 
+                                title="Formato validos (0293)432-1234"
+                                 >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-4">
+                              <!-- //code -->
+                              <div class="form-group">
+                              <label for="txt_telefono_celular" class="col-sm-4 control-label">Teléfono Celular</label>
+                              <div class="col-sm-8">
+                                <input class="form-control" id="txt_telefono_celular" type="text"   name="txt_telefono_celular"   placeholder="Ejm 0416-1234567" list="listatelefonos">
+                                <datalist id="listatelefonos">
+                                  <option value="0416-0000000">
+                                  <option value="0426-0000000">
+                                  <option value="0412-0000000">
+                                  <option value="0414-0000000">
+                                  <option value="0424-0000000">
+                              </datalist>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <!-- //code -->
+                            <div class="form-group">
+                              <label for="txt_nombre_funcionario" class="col-sm-4 control-label">Correo Elect.</label>
+                              <div class="col-sm-8">
+                                <input type="email" class="form-control" id="txt_nombre_funcionario" name="txt_nombre_funcionario"  placeholder="Ingrese correo válido" >
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        
+
+                        <div  id="cuadro_datos_laborales">
+
+                            <div class="row" >
+                              <!-- col1 -->
+                              <div class="col-sm-4">
+                                <!-- //code -->
+                                <div class="form-group" >
+                                  <label for="txt_tipo_personal" class="col-sm-3 control-label">Personal</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="txt_tipo_personal" name="txt_tipo_personal" placeholder="" readonly="readonly">
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- col2 -->
+                              <div class="col-sm-8">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_cargo_funcional" class="col-sm-3 control-label">Cargo Funcional</label>
+                                  <div class="col-sm-9">
+                                    <input type="hidden" class="form-control" id="txt_id_cargo_funcional" name="txt_id_cargo_funcional">
+                                    <input type="text" class="form-control" id="txt_cargo_funcional" name="txt_cargo_funcional" placeholder="Director" >
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- cierre -->
+                            </div>
+
+
+                            <div class="row">
+                              <!-- col1 -->
+                              <div class="col-sm-4">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_municipio" class="col-sm-3 control-label">Municipio</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="txt_municipio" name="txt_municipio" placeholder="" readonly="readonly">
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- col2 -->
+                              <div class="col-sm-8">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_lugar_trabajo" class="col-sm-3 control-label">Lugar de Trabajo</label>
+                                  <div class="col-sm-9">
+                                    <input type="hidden" class="form-control" id="txt_id_lugar_trabajo" name="txt_id_lugar_trabajo" readonly="readonly">
+                                    <input type="text" class="form-control" id="txt_lugar_trabajo" name="txt_lugar_trabajo" placeholder="" readonly="readonly">
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- cierre -->
+                            </div>
+                              
+                            <hr style="color: #0056b2;" />
+                        
+                        </div>  <!-- ./ cuadro_datos_laborales -->
+
+
+
+
+
+                        <div class="row" id="cuadro_busqueda_datos_laborales">
+                            <!-- col1 -->
+                            <div class="col-sm-12">
+                              <!-- //code -->
+                              <table id="table2"
+                                    data-show-refresh="false"
+                                    data-show-columns="false"
+                              >
+                                <thead>
+                                  <tr>
+                                   <th data-field="municipio_nombre" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"    >Municipio</th>
+                                   <th data-field="categoria_cargo_descripcion" data-filter-control="select" data-sortable="false" data-halign="center"             >Personal</th>                   
+                                   <th data-field="cargo_labora" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"        >Cargo Funcional</th>
+                                   <th data-field="dependencia_labora" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Lugar de Trabajo</th>
+                                   <th data-field="cargo_codigo" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"        >Código</th>
+                                   <th data-field="cargo_denominacion" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Cargo Nominal</th>
+                                   <th data-field="cargo_denominacion" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fecha Asig.</th>
+                                   <th data-field="action" data-align="center" data-formatter="actionFormatter2" data-events="actionEvents2"                        >Acción</th>
+                                 </tr>
+                                </thead>
+                              </table>
+                            </div>
+                            <!-- cierre -->
+                            <br>
+                        </div>
+
+                        
+                        
+
+                        <div id="cuadro_solicitud_permiso" style="display: none;">
+
+                            <div class="row">
+                              <!-- col1 -->
+                              <div class="col-sm-6">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_tipo_permiso" class="col-sm-4 control-label">Tipo de Permiso</label>
+                                  <div class="col-sm-8">
+                                    <select class="form-control" id="txt_tipo_permiso" name="txt_tipo_permiso">
+                                      <option value=''>Seleccione</option>
+                                      
+                                      <optgroup label="Permisos Obligatorios">  
+                                        <option value='11' disabled="disabled">Matrimonio</option>
+                                        <option value='12' disabled="disabled">Reposo prenatal</option>
+                                        <option value='13' disabled="disabled">Reposo Post-Natal</option>
+                                        <option value='14' disabled="disabled">Nacimiento de Hijos</option>
+                                        <option value='15' >Enfermedad</option>
+                                        <option value='16' >Fallecimiento de Familiar</option>
+                                        <option value='17' >Participación activa en evento deportivo</option>
+                                        <option value='18' >Comparecencia obligatoria ante una autoridad</option>
+                                      </optgroup>
+
+                                      <optgroup label="Permisos Potestativos">  
+                                        <option value='51' >Enfermedad Familiar</option>
+                                        <option value='52' >Accidente Grave Familiar</option>
+                                        <option value='53' >Siniestro</option>
+                                        <option value='54' >Realizar Estudios</option>
+                                        <option value='55' >Presentar Exámenes</option>
+                                        <option value='56' >Diligencias Personales</option>
+                                        <option value='57' >Actividades Deportivas</option>
+                                        <option value='58' >Asistencia a Seminario</option>
+                                        <option value='59' >Conferencia o Congreso</option>
+                                        <option value='60' >Becas</option>
+                                        <option value='61' >Otros</option>
+                                      </optgroup>                        
+                                    </select>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <!-- col2 -->
+                              <div class="col-sm-6">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_motivo_permiso" class="col-sm-4 control-label">Motivo de Permiso</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="txt_motivo_permiso" name="txt_motivo_permiso" placeholder="Ingresa motivo">
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- row cierre -->
+                            </div>   
+
+
+                            <div class="row">
+                              <!-- col1 -->
+                              <div class="col-sm-6">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_cantidad_dias" class="col-sm-4 control-label">Cantidad de Días</label>
+                                  <div class="col-sm-8">
+                                    <input type="number" min="1" max="3" class="form-control" id="txt_cantidad_dias" name="txt_cantidad_dias" placeholder="Ingresa días">
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- col2 -->
+                              <div class="col-sm-6">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_periodo_registro" class="col-sm-4 control-label">Periodo</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input class="form-control pull-right"  type="text"   id="txt_periodo_registro"    name="txt_periodo_registro"  >
+                                    </div><!-- /.input group -->
+                                  </div>
+                                </div><!-- /.form group -->
+                              </div>
+                              <!-- row cierre -->
+                            </div>
+
+
+                            <div class="row">
+                              <!-- col1 -->
+                              <div class="col-sm-6">
+                                <!-- //code -->
+                                <!-- <div class="form-group">
+                                  <label for="txt_cantidad_dias" class="col-sm-4 control-label">Cantidad de Días</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="txt_cantidad_dias" name="txt_cantidad_dias" placeholder="Ingresa días">
+                                  </div>
+                                </div> -->
+                              </div>
+                              <!-- col2 -->
+                              <div class="col-sm-6">
+                                <!-- //code -->
+                                <div class="form-group">
+                                  <label for="txt_fecha_registro" class="col-sm-4 control-label">Fecha Registro</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input class="form-control pull-right"  type="text"   id="txt_fecha_registro"    name="txt_fecha_registro"  >
+                                    </div><!-- /.input group -->
+                                  </div>
+                                </div><!-- /.form group -->
+                              </div>
+                              <!-- row cierre -->
+                            </div>
+
+                        </div> <!-- /.cuadro_solicitud_permiso -->                        
+
+                      </div><!-- /.box-body -->
+                  </div> <!--/.modal-body-->
+                  
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Cerrar</button>
+                      <button type="button" name="btn_enviar_modal" id="btn_enviar_modal"  class="btn btn-primary submit"><i class="fa fa-save"></i> Enviar</button>
+                    </div>
+                  
+                  
+                    
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+          
+          </form> 
+
 <?php /* ?>
           <form class="form-horizontal" id="form_modal_registros222">  
             <div id="modal_registros" class="modal fade">
