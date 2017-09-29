@@ -6,6 +6,10 @@
     var $table = $('#table').bootstrapTable({url: API_URL_planteles});
     
     $modal = $('#modal_registros').modal({show: false});
+
+    $modal_asignar_autoridades = $('#ventana_modal_asignar_autoridades').modal({show: false});
+
+    
     
     $alert = $('.alert').hide();
     
@@ -219,7 +223,9 @@
             // console.log($(this).attr('title'));
             // alert($(this).attr('title'));
             // showAlert($(this).attr('title'), 'success');
-            showModal($(this).attr('title'), row);  
+            // showModal($(this).attr('title'), row);
+            showModalName($modal_asignar_autoridades,$(this).attr('title'), row);
+              
         },
 
         'click .remove': function (e, value, row) {
@@ -246,7 +252,18 @@
         }
     };
 
-
+    function showModalName(ventana,title, row) {
+      // body...
+      console.log(accion);
+      console.log(ventana);
+      console.log(title);
+      console.log(row);
+      // if (accion=='agregar_registros') {
+      //   $modal.find('button[name="btn_enviar_periodo"]').text("Modificar Plantel");
+      // }
+      ventana.modal('show');
+    }
+    //
     function showModal(title, row) {
         row = row || {
             id_periodo: '',
