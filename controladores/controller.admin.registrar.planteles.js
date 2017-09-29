@@ -1,7 +1,7 @@
     console.log("javascript - root registrar planteles");
 
-    //var API_URL_periodos =  "servicios/services.periodos.php?accion=consultar_periodos";
-    var API_URL_planteles =  "servicios/services.admin.planteles.php?accion=consultar_periodos";
+    //var API_URL_periodos =  "servicios/services.periodos.php?accion=consultar_registros";
+    var API_URL_planteles =  "servicios/services.admin.planteles.php?accion=consultar_registros";
     var API_URL =  "servicios/services.admin.planteles.php";
     var $table = $('#table').bootstrapTable({url: API_URL_planteles});
     
@@ -44,31 +44,31 @@
 
         
 
-        //$modal.find('#btn_crear_periodo').click(function ()  {
+        //$modal.find('#btn_crear_registro').click(function ()  {
         //
         //});
-        $('#btn_crear_periodo').click(function () {
-            accion ='agregar_periodos';
+        $('#btn_crear_registro').click(function () {
+            accion ='agregar_registros';
             console.log(accion)
-            showModal('Nuevo Registro');
+            showModal('PLANTELES: Nuevo Registro');
             $modal.modal('show');
-            // marcamos el check de inactivo
-            $("#txt_radio_estatus0" ).prop("checked" , true );
-            // desabilitamos el check de activo
-            $("#txt_radio_estatus1").prop('disabled', true);
-            // cambiamos el texto del boton enviar
-            $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Plantel");
+            // // marcamos el check de inactivo
+            // $("#txt_radio_estatus0" ).prop("checked" , true );
+            // // desabilitamos el check de activo
+            // $("#txt_radio_estatus1").prop('disabled', true);
+            // // cambiamos el texto del boton enviar
+            // $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Plantel");
             
             
-            $modal.find('input[name="txt_codigo_periodo"]').val('');
-            $modal.find('input[name="txt_nombre_periodo"]').val('');
-            $modal.find('input[name="txt_rango_fecha"]').val('');
-            $modal.find('input[name="txt_fecha_inicio"]').val('');
-            $modal.find('input[name="txt_fecha_cierre"]').val('');
+            // $modal.find('input[name="txt_codigo_periodo"]').val('');
+            // $modal.find('input[name="txt_nombre_periodo"]').val('');
+            // $modal.find('input[name="txt_rango_fecha"]').val('');
+            // $modal.find('input[name="txt_fecha_inicio"]').val('');
+            // $modal.find('input[name="txt_fecha_cierre"]').val('');
 
-            $modal.find('input[name="txt_fecha_recaudo"]').val('');
-            $modal.find('input[name="txt_fecha_recaudo_inicio"]').val('');
-            $modal.find('input[name="txt_fecha_recaudo_cierre"]').val('');
+            // $modal.find('input[name="txt_fecha_recaudo"]').val('');
+            // $modal.find('input[name="txt_fecha_recaudo_inicio"]').val('');
+            // $modal.find('input[name="txt_fecha_recaudo_cierre"]').val('');
 
             //console.log(accion);
         });
@@ -83,7 +83,7 @@
             });
             
             row['txt_radio_estatus'] = $('input:radio[name=txt_radio_estatus]:checked').val();
-            row['accion'] ="agregar_periodos"
+            row['accion'] ="agregar_registros"
             
             // console.log(row);
             
@@ -151,9 +151,13 @@
             '    Seleccione <span class="caret"></span>',
             '  </button>',
             '  <ul class="dropdown-menu pull-right" role="menu">',
-            '    <li><a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i>Ver Registro</a></li>',
-            '    <li><a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i>Modificar Registro</a></li>',
-            '    <li><a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i>Eliminar Registro</a></li>',
+            // '    <li><a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i>Ver Registro</a></li>',
+            '    <li><a class="update" href="javascript:" title="Editar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i>Modificar Registro</a></li>',
+            // '    <li><a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i>Eliminar Registro</a></li>',
+            
+            '    <li><a class="add_autoridades" href="javascript:" title="Asignar Autoridades"><i class="glyphicon glyphicon-green glyphicon glyphicon-user "></i>Asignar Autoridades</a></li>',
+
+
             '  </ul>',
             '</div>'
         ].join('');
@@ -194,20 +198,33 @@
     // update and delete events
     window.actionEvents = {
         'click .view': function (e, value, row) {
-            accion='ver_periodos'
+            accion='ver_registro'
             // console.log(row);
             // console.log($(this).attr('title'));
             showModal($(this).attr('title'), row);  
         },
         'click .update': function (e, value, row) {
-            accion='modificar_periodos'
+            accion='modificar_registro'
             //console.log(row);
             // console.log($(this).attr('title'));
             showModal($(this).attr('title'), row);  
         },
+
+
+        'click .add_autoridades': function (e, value, row) {
+            accion='add_autoridades'
+            // console.log(e);
+            // console.log(value);
+            // console.log(row);
+            // console.log($(this).attr('title'));
+            // alert($(this).attr('title'));
+            // showAlert($(this).attr('title'), 'success');
+            showModal($(this).attr('title'), row);  
+        },
+
         'click .remove': function (e, value, row) {
             // console.log($(this).attr('title'));
-            accion='eliminar_periodos'
+            accion='eliminar_registro'
             if (row.estatus ==1) {
               var estatus ="Activo";
             }else{
@@ -240,9 +257,9 @@
             estatus: 0
         }; // default row value
         // console.log(title, row);
-        console.log("row. " + row.id_periodo, accion);
-        
-        if (accion=='agregar_periodos') {
+        // console.log("row. " + row.id_periodo, accion);
+        console.log(accion);
+        if (accion=='agregar_registros') {
           //code
           // habilitamos los check - activo
           $modal.find('.modal-title').text(title);
@@ -253,141 +270,141 @@
           $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Plantel");
         }
 
-        if (accion=='ver_periodos') {
-          //code
-          // habilitamos los check - activo
-          $("#txt_radio_estatus0").prop('disabled', true);
-          $("#txt_radio_estatus1").prop('disabled', true);
+        if (accion=='ver_registro') {
+          // //code
+          // // habilitamos los check - activo
+          // $("#txt_radio_estatus0").prop('disabled', true);
+          // $("#txt_radio_estatus1").prop('disabled', true);
 
-          $("#txt_nombre_periodo").attr('disabled', true);
-          $("#txt_fecha_recaudo").attr('disabled', true);
-          $("#txt_rango_fecha").attr('disabled', true);
+          // $("#txt_nombre_periodo").attr('disabled', true);
+          // $("#txt_fecha_recaudo").attr('disabled', true);
+          // $("#txt_rango_fecha").attr('disabled', true);
           
-          $("#btn_enviar_periodo").attr('disabled', true);
-          $("#btn_enviar_periodo").hide();
+          // $("#btn_enviar_periodo").attr('disabled', true);
+          // $("#btn_enviar_periodo").hide();
 
 
-          // fecha periodo
-          var fechaini =  row['fecha_inicio'].split('-');
-          var fechafin =  row['fecha_cierre'].split('-');
+          // // fecha periodo
+          // var fechaini =  row['fecha_inicio'].split('-');
+          // var fechafin =  row['fecha_cierre'].split('-');
           
-          var ani_ini = fechaini[0];
-          var mes_ini = fechaini[1];
-          var dia_ini = fechaini[2];
+          // var ani_ini = fechaini[0];
+          // var mes_ini = fechaini[1];
+          // var dia_ini = fechaini[2];
           
-          var ani_fin = fechafin[0];
-          var mes_fin = fechafin[1];
-          var dia_fin = fechafin[2];
+          // var ani_fin = fechafin[0];
+          // var mes_fin = fechafin[1];
+          // var dia_fin = fechafin[2];
           
-          var fini = mes_ini + '/' + dia_ini + '/' + ani_ini;
-          var ffin = mes_fin + '/' + dia_fin + '/' + ani_fin;
-          var rango =  fini + ' - ' + ffin;
+          // var fini = mes_ini + '/' + dia_ini + '/' + ani_ini;
+          // var ffin = mes_fin + '/' + dia_fin + '/' + ani_fin;
+          // var rango =  fini + ' - ' + ffin;
 
-          // fecha recaudos
-          var fechaini_reca =  row['fecha_recaudo_ini'].split('-');
-          var fechafin_reca =  row['fecha_recaudo_fin'].split('-');
+          // // fecha recaudos
+          // var fechaini_reca =  row['fecha_recaudo_ini'].split('-');
+          // var fechafin_reca =  row['fecha_recaudo_fin'].split('-');
           
-          var ani_ini_reca = fechaini_reca[0];
-          var mes_ini_reca = fechaini_reca[1];
-          var dia_ini_reca = fechaini_reca[2];
+          // var ani_ini_reca = fechaini_reca[0];
+          // var mes_ini_reca = fechaini_reca[1];
+          // var dia_ini_reca = fechaini_reca[2];
           
-          var ani_fin_reca = fechafin_reca[0];
-          var mes_fin_reca = fechafin_reca[1];
-          var dia_fin_reca = fechafin_reca[2];
+          // var ani_fin_reca = fechafin_reca[0];
+          // var mes_fin_reca = fechafin_reca[1];
+          // var dia_fin_reca = fechafin_reca[2];
           
-          var fini_reca  = mes_ini_reca + '/' + dia_ini_reca + '/' + ani_ini_reca;
-          var ffin_reca  = mes_fin_reca + '/' + dia_fin_reca + '/' + ani_fin_reca;
-          var rango_reca = fini_reca    +' - '+ ffin_reca;
+          // var fini_reca  = mes_ini_reca + '/' + dia_ini_reca + '/' + ani_ini_reca;
+          // var ffin_reca  = mes_fin_reca + '/' + dia_fin_reca + '/' + ani_fin_reca;
+          // var rango_reca = fini_reca    +' - '+ ffin_reca;
 
-          // console.log(rango);
-          // console.log(rango_reca);
+          // // console.log(rango);
+          // // console.log(rango_reca);
 
-          $modal.find('.modal-title').text(title);
-          $modal.find('input[name="txt_codigo_periodo"]').val(row['id_periodo']);
-          $modal.find('input[name="txt_nombre_periodo"]').val(row['nombre_periodo']);
+          // $modal.find('.modal-title').text(title);
+          // $modal.find('input[name="txt_codigo_periodo"]').val(row['id_periodo']);
+          // $modal.find('input[name="txt_nombre_periodo"]').val(row['nombre_periodo']);
           
-          $modal.find('input[name="txt_rango_fecha"]').val(rango );
-          $modal.find('input[name="txt_fecha_inicio"]').val(ani_ini + '/' + mes_ini + '/' + dia_ini );
-          $modal.find('input[name="txt_fecha_cierre"]').val(ani_fin + '/' + mes_fin + '/' + dia_fin );
+          // $modal.find('input[name="txt_rango_fecha"]').val(rango );
+          // $modal.find('input[name="txt_fecha_inicio"]').val(ani_ini + '/' + mes_ini + '/' + dia_ini );
+          // $modal.find('input[name="txt_fecha_cierre"]').val(ani_fin + '/' + mes_fin + '/' + dia_fin );
 
-          $modal.find('input[name="txt_fecha_recaudo"]').val(rango_reca);
-          $modal.find('input[name="txt_fecha_recaudo_inicio"]').val(ani_ini_reca + '/' + mes_ini_reca + '/' + dia_ini_reca );
-          $modal.find('input[name="txt_fecha_recaudo_cierre"]').val(ani_fin_reca + '/' + mes_fin_reca + '/' + dia_fin_reca );
-          if (row['estatus']==0){
-            $("#txt_radio_estatus0" ).prop("checked" , true )  
-          }else{
-            $("#txt_radio_estatus1" ).prop("checked" , true )
-          }
+          // $modal.find('input[name="txt_fecha_recaudo"]').val(rango_reca);
+          // $modal.find('input[name="txt_fecha_recaudo_inicio"]').val(ani_ini_reca + '/' + mes_ini_reca + '/' + dia_ini_reca );
+          // $modal.find('input[name="txt_fecha_recaudo_cierre"]').val(ani_fin_reca + '/' + mes_fin_reca + '/' + dia_fin_reca );
+          // if (row['estatus']==0){
+          //   $("#txt_radio_estatus0" ).prop("checked" , true )  
+          // }else{
+          //   $("#txt_radio_estatus1" ).prop("checked" , true )
+          // }
 
           $modal.find('button[name="btn_enviar_periodo"]').text("Ver Plantel");
           
         }
 
-        if (accion=='modificar_periodos' ) {
-          //code
-          // habilitamos los check - activo
-          $("#txt_radio_estatus0").prop('disabled', false);
-          $("#txt_radio_estatus1").prop('disabled', false);
+        if (accion=='modificar_registro' ) {
+          // //code
+          // // habilitamos los check - activo
+          // $("#txt_radio_estatus0").prop('disabled', false);
+          // $("#txt_radio_estatus1").prop('disabled', false);
 
-          $("#txt_nombre_periodo").attr('disabled', false);
-          $("#txt_fecha_recaudo").attr('disabled', false);
-          $("#txt_rango_fecha").attr('disabled', false);
+          // $("#txt_nombre_periodo").attr('disabled', false);
+          // $("#txt_fecha_recaudo").attr('disabled', false);
+          // $("#txt_rango_fecha").attr('disabled', false);
           
-          $("#btn_enviar_periodo").attr('disabled', false);
-          $("#btn_enviar_periodo").show();
+          // $("#btn_enviar_periodo").attr('disabled', false);
+          // $("#btn_enviar_periodo").show();
 
           
-          // fecha periodo
-          var fechaini =  row['fecha_inicio'].split('-');
-          var fechafin =  row['fecha_cierre'].split('-');
+          // // fecha periodo
+          // var fechaini =  row['fecha_inicio'].split('-');
+          // var fechafin =  row['fecha_cierre'].split('-');
           
-          var ani_ini = fechaini[0];
-          var mes_ini = fechaini[1];
-          var dia_ini = fechaini[2];
+          // var ani_ini = fechaini[0];
+          // var mes_ini = fechaini[1];
+          // var dia_ini = fechaini[2];
           
-          var ani_fin = fechafin[0];
-          var mes_fin = fechafin[1];
-          var dia_fin = fechafin[2];
+          // var ani_fin = fechafin[0];
+          // var mes_fin = fechafin[1];
+          // var dia_fin = fechafin[2];
           
-          var fini = mes_ini + '/' + dia_ini + '/' + ani_ini;
-          var ffin = mes_fin + '/' + dia_fin + '/' + ani_fin;
-          var rango =  fini + ' - ' + ffin;
+          // var fini = mes_ini + '/' + dia_ini + '/' + ani_ini;
+          // var ffin = mes_fin + '/' + dia_fin + '/' + ani_fin;
+          // var rango =  fini + ' - ' + ffin;
 
-          // fecha recaudos
-          var fechaini_reca =  row['fecha_recaudo_ini'].split('-');
-          var fechafin_reca =  row['fecha_recaudo_fin'].split('-');
+          // // fecha recaudos
+          // var fechaini_reca =  row['fecha_recaudo_ini'].split('-');
+          // var fechafin_reca =  row['fecha_recaudo_fin'].split('-');
           
-          var ani_ini_reca = fechaini_reca[0];
-          var mes_ini_reca = fechaini_reca[1];
-          var dia_ini_reca = fechaini_reca[2];
+          // var ani_ini_reca = fechaini_reca[0];
+          // var mes_ini_reca = fechaini_reca[1];
+          // var dia_ini_reca = fechaini_reca[2];
           
-          var ani_fin_reca = fechafin_reca[0];
-          var mes_fin_reca = fechafin_reca[1];
-          var dia_fin_reca = fechafin_reca[2];
+          // var ani_fin_reca = fechafin_reca[0];
+          // var mes_fin_reca = fechafin_reca[1];
+          // var dia_fin_reca = fechafin_reca[2];
           
-          var fini_reca  = mes_ini_reca + '/' + dia_ini_reca + '/' + ani_ini_reca;
-          var ffin_reca  = mes_fin_reca + '/' + dia_fin_reca + '/' + ani_fin_reca;
-          var rango_reca = fini_reca    +' - '+ ffin_reca;
+          // var fini_reca  = mes_ini_reca + '/' + dia_ini_reca + '/' + ani_ini_reca;
+          // var ffin_reca  = mes_fin_reca + '/' + dia_fin_reca + '/' + ani_fin_reca;
+          // var rango_reca = fini_reca    +' - '+ ffin_reca;
 
-          // console.log(rango);
-          // console.log(rango_reca);
+          // // console.log(rango);
+          // // console.log(rango_reca);
 
-          $modal.find('.modal-title').text(title);
-          $modal.find('input[name="txt_codigo_periodo"]').val(row['id_periodo']);
-          $modal.find('input[name="txt_nombre_periodo"]').val(row['nombre_periodo']);
+          // $modal.find('.modal-title').text(title);
+          // $modal.find('input[name="txt_codigo_periodo"]').val(row['id_periodo']);
+          // $modal.find('input[name="txt_nombre_periodo"]').val(row['nombre_periodo']);
           
-          $modal.find('input[name="txt_rango_fecha"]').val(rango );
-          $modal.find('input[name="txt_fecha_inicio"]').val(ani_ini + '/' + mes_ini + '/' + dia_ini );
-          $modal.find('input[name="txt_fecha_cierre"]').val(ani_fin + '/' + mes_fin + '/' + dia_fin );
+          // $modal.find('input[name="txt_rango_fecha"]').val(rango );
+          // $modal.find('input[name="txt_fecha_inicio"]').val(ani_ini + '/' + mes_ini + '/' + dia_ini );
+          // $modal.find('input[name="txt_fecha_cierre"]').val(ani_fin + '/' + mes_fin + '/' + dia_fin );
 
-          $modal.find('input[name="txt_fecha_recaudo"]').val(rango_reca);
-          $modal.find('input[name="txt_fecha_recaudo_inicio"]').val(ani_ini_reca + '/' + mes_ini_reca + '/' + dia_ini_reca );
-          $modal.find('input[name="txt_fecha_recaudo_cierre"]').val(ani_fin_reca + '/' + mes_fin_reca + '/' + dia_fin_reca );
-          if (row['estatus']==0){
-            $("#txt_radio_estatus0" ).prop("checked" , true )  
-          }else{
-            $("#txt_radio_estatus1" ).prop("checked" , true )
-          }
+          // $modal.find('input[name="txt_fecha_recaudo"]').val(rango_reca);
+          // $modal.find('input[name="txt_fecha_recaudo_inicio"]').val(ani_ini_reca + '/' + mes_ini_reca + '/' + dia_ini_reca );
+          // $modal.find('input[name="txt_fecha_recaudo_cierre"]').val(ani_fin_reca + '/' + mes_fin_reca + '/' + dia_fin_reca );
+          // if (row['estatus']==0){
+          //   $("#txt_radio_estatus0" ).prop("checked" , true )  
+          // }else{
+          //   $("#txt_radio_estatus1" ).prop("checked" , true )
+          // }
           
           $modal.find('button[name="btn_enviar_periodo"]').text("Modificar Plantel");
           
@@ -401,5 +418,5 @@
               .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
         setTimeout(function () {
             $alert.hide();
-        }, 3000);
+        }, 50000);
     }
