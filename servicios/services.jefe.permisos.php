@@ -392,7 +392,7 @@
             				'$fecha_desde', 
             				'$fecha_hasta', 
             				'$fecha_registro', 
-            				'$txt_tipo_permiso',
+            				$txt_tipo_permiso,
             				'$estatus', 
             				'$txt_motivo_permiso', 
             				'$txt_id_jefeinmediato');";
