@@ -23,7 +23,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
           <div class="row"> 
             <div class="col-sm12 col-md-12">
               <p class="toolbar" id="toolbar1">
-                <a class="create btn btn-default" id="btn_crear_periodo"href="javascript:">Agregar Plantel</a>
+                <a class="create btn btn-default" id="btn_crear_registro"href="javascript:">Agregar Plantel</a>
                 <span class="alert"></span>
               </p>
             </div> <!--// fin col-sm-->
@@ -32,11 +32,11 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
           <div class="row">
             <div class="col-sm12 col-md-12">
              <!--  <table id="table"
-                    data-show-refresh="true"
-                    data-show-columns="true"
-                    data-search="true"
-                    data-pagination="true"
-                    data-query-params="queryParams"
+                      data-show-refresh="true"
+                      data-show-columns="true"
+                      data-search="true"
+                      data-pagination="true"
+                      data-query-params="queryParams"
                     data-toolbar="#toolbar1"
               > -->
                 <!-- <thead> -->
@@ -60,8 +60,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                data-search="true"
                data-show-export="true"
                data-pagination="true"
-               data-page-list="[10, 25, 50, 5000, ALL]"
-               
+               data-page-list="[5, 10, 25, 50, 100]"
                data-query-params="queryParams"
                data-toolbar=".toolbar"
                data-filter-control="true">
@@ -71,14 +70,13 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                 <th data-field="stargazers_count">Stars</th>-->
                 <!--<th data-field="listado_nacionalidad">Nac</th>-->
                  <!--<th data-field="state" data-checkbox="true"></th>-->
-                   <th data-field="plan_uid" data-filter-control="input" data-sortable="true" data-halign="center" data-align="center"  >Id</th>
-                   <th data-field="plan_codigodea" data-filter-control="input" data-sortable="true" data-halign="center"  >Cod Plantel</th>
-                   <th data-field="plan_nombre" data-filter-control="input" data-sortable="true" data-halign="center"  >Plantel</th>
-                   <th data-field="plan_codnomina"   data-filter-control="input" data-sortable="true" data-halign="center"  >Cod. Nómina</th>                   
-                   <th data-field="municipio_nombre"  data-filter-control="input" data-sortable="true" data-halign="center" data-align="center"  >Municipio</th>
-                   
-                   <th data-field="parroquia_nombre"  data-filter-control="input"  data-sortable="true" data-halign="center" data-align="center"  >Parroquia</th>
-                   <th data-field="md_nombre"   data-sortable="true" data-halign="center" data-align="center" data-filter-control="input"  >Modalidad</th>
+                   <th data-field="plan_uid"          data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Id</th>
+                   <th data-field="plan_codigodea"    data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Cod Plantel</th>
+                   <th data-field="plan_nombre"       data-filter-control="input"   data-sortable="true" data-halign="center" data-align="left"   >Plantel</th>
+                   <th data-field="plan_codnomina"    data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Cod. Nómina</th>                   
+                   <th data-field="municipio_nombre"  data-filter-control="select"  data-sortable="true" data-halign="center" data-align="center" >Municipio</th>
+                   <th data-field="parroquia_nombre"  data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Parroquia</th>
+                   <th data-field="md_nombre"         data-filter-control="select"  data-sortable="true" data-halign="center" data-align="center" >Modalidad</th>
                 
                 <th data-field="action"
                     data-align="center"
@@ -94,6 +92,68 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 //
 ?>
           <form class="form-horizontal" id="form_modal_registros">	
+            <div id="modal_registros" class="modal fade">
+              <!-- <div class="modal-dialog"> -->
+              <div class="modal-dialog" id="modal-dialog-xl">
+                <div class="modal-content">
+                  
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Plantel</h4>
+                  </div>
+                  
+                  <div class="modal-body">
+                      <div class="box-body">
+                        
+                        <div class="form-group">
+                          <label for="txt_plan_nombre" class="col-sm-3 control-label">Nombre Dependencia</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" id="txt_plan_codigodea" type="hidden" name="txt_plan_codigodea">
+                            <input class="form-control" id="txt_plan_nombre" type="text"   name="txt_plan_nombre" placeholder="Ingrese nombre" >
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="txt_plan_codnomina" class="col-sm-3 control-label">Dependencia Nómina</label>
+                          <div class="col-sm-9">
+                            <!-- <input class="form-control" id="txt_plan_codnomina" type="hidden" name="txt_plan_codnomina"> -->
+                            <input class="form-control" id="txt_plan_codnomina" type="text"   name="txt_plan_codnomina" placeholder="Código Nómina" >
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="txt_plan_nombre" class="col-sm-3 control-label">Nombre Dependencia</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" id="txt_plan_codigodea" type="hidden" name="txt_plan_codigodea">
+                            <input class="form-control" id="txt_plan_nombre" type="text"   name="txt_plan_nombre" placeholder="Ingrese nombre" >
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="txt_plan_nombre" class="col-sm-3 control-label">Nombre Dependencia</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" id="txt_plan_codigodea" type="hidden" name="txt_plan_codigodea">
+                            <input class="form-control" id="txt_plan_nombre" type="text"   name="txt_plan_nombre" placeholder="Ingrese nombre" >
+                          </div>
+                        </div>
+                        
+                      </div><!-- /.box-body -->
+                  </div> <!--/.modal-body-->
+                  
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      <button type="button" name="btn_enviar_periodo" id="btn_enviar_periodo"  class="btn btn-primary submit">Enviar</button>
+                    </div>
+                  
+                  
+                    
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+          
+          </form>							
+<?php /* ?>
+          <form class="form-horizontal" id="form_modal_registros222">  
             <div id="modal_registros" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -175,7 +235,8 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
               </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
           
-          </form>							
+          </form>             
+<?php */ ?>
       <!--./.....CONTENIDO AQUI-->
       <!--./.....CONTENIDO AQUI-->
       <!--./.....CONTENIDO AQUI-->
