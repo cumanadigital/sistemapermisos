@@ -47,24 +47,24 @@
 	$accion					=	$datos['accion']; //	agregar_registros"
 	switch ($accion){
 		case 'consultar_registros':
-			consulta_periodos($datos);
+			consultar_registros($datos);
 		break;
 		case 'agregar_registros':
 			agregar_registros($datos);
 		break;
-		case 'modificar_periodos':
-			modificar_periodos($datos);
+		case 'modificar_registros':
+			modificar_registros($datos);
 		break;
-		case 'eliminar_periodos':
-			eliminar_periodos($datos);
+		case 'eliminar_registros':
+			eliminar_registros($datos);
 		break;
-		case 'consultar_periodos_filtro':
-			consultar_periodos_filtro($datos);
+		case 'consultar_registros_filtro':
+			consultar_registros_filtro($datos);
 		break;
 	}
 ?>
 <?php
-	function consulta_periodos($datos) {
+	function consultar_registros($datos) {
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 		// $sql = "SELECT 	id_periodo, 
 		// 				nombre_periodo, 
@@ -356,7 +356,7 @@
 	}
 ?>
 <?php
-	function modificar_periodos($datos) {
+	function modificar_registros($datos) {
 		// INICIA LA CONEXION CON EL SERVIDOR 
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 		// PARAMETROS DEL FORMULARIO
@@ -401,7 +401,7 @@
 	}
 ?>
 <?php
-	function eliminar_periodos($datos) {
+	function eliminar_registros($datos) {
 		// INICIA LA CONEXION CON EL SERVIDOR MYSQL
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 		// PARAMETROS DEL FORMULARIO

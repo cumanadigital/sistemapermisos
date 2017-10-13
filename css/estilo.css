@@ -69,6 +69,10 @@ img.imgcenter{
   width: 90%;
 }
 
+#modal-dialog-xl2 {
+  width: 95%;
+}
+
 #loginbox_register {
   /*width: 80%;*/
   /*margin-top: 5px;*/

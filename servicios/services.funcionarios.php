@@ -92,6 +92,12 @@
 					car.categoria_cargo_descripcion,
 					c.cargo_codigo,
 					c.cargo_denominacion,
+					--ed.empleado_dep_hdocentes,
+					--ed.empleado_dep_hadministrativas,
+					
+					COALESCE(ed.empleado_dep_hdocentes ,0) ||'/'|| coalesce(ed.empleado_dep_hadministrativas,0) as horas_laboradas ,
+					e.empleado_fechaingreso,
+
 					UPPER(m.municipio_nombre) AS municipio_nombre
 
 					FROM comun.persona as p

@@ -9,6 +9,18 @@
 
     $modal_asignar_autoridades = $('#ventana_modal_asignar_autoridades').modal({show: false});
 
+
+    var permite_eliminar = false;    
+    var username = $('#user_name').attr('oculto');
+    var userced = $('#user_name').attr('ocultoced');
+    var sesionencode = $('#user_name').attr('sesionencode');
+    var usernombre = $('#name_user').html();
+    var cargouser = $('#cargo_user').html();
+    var dptouser = $('#departamento_user').html();
+    var userestatus = $('#estatus_loading').attr('estatus');
+
+    var cantdependencias = $('#user_name').attr('cantdependencias');
+
     
     
     $alert = $('.alert').hide();
@@ -76,6 +88,109 @@
 
             //console.log(accion);
         });
+
+
+
+        $('#btn_buscar').click(function () {
+            accion ='consultar_funcionarios';
+            var cedula = $("#txt_cedula_personal").val();
+            console.log(cedula);
+            // // $('#cuadro_busqueda_datos_laborales').show();
+            // // var cedula = $("#txt_cedula_personal").val();
+            if (cedula!='') {
+              parametros =  'cedula='+cedula+'&accion='+ accion  + '&'+sesionencode;
+              console.log(parametros);
+              API_URL =  "servicios/services.funcionarios.php";
+              $.ajax({
+                  url: API_URL + ($modal.data('id') || ''),
+                  type: 'POST',
+                  //contentType: 'application/json',
+                  //data: JSON.stringify(row),
+                  data: parametros + "&token1="+rand_code(),
+                  success: function (response) {
+                      // $modal.modal('hide');
+                      // showAlert('Registro con éxito!', 'success');
+                      // $table.bootstrapTable('refresh');
+                      // console.log('ok entro en la consulta');
+                      console.log(response.length);
+                      console.log(response);
+
+                      // var mydata =  [
+                      //                  {
+                      //                     "persona_uid":"Eqz41mUb-HT4Z-Q2J0-LM6o-iciHokHBrGYt",
+                      //                     "persona_cedula":"11829328",
+                      //                     "apellidos_nombres":"HERNANDEZ CAMPOS OSWALDO ENRIQUES",
+                      //                     "dependencia_labora":"DIV. DE INFORMATICA Y SISTEMAS",
+                      //                     "cargo_labora":"COORD. SISTEMAS Y BASES DE DATOS",
+                      //                     "cargo_codigo":"10000C",
+                      //                     "cargo_denominacion":"BACHILLER CONTRATADO",
+                      //                     "municipio_nombre":"SUCRE"
+                      //                  },
+                      //                  {
+                      //                     "persona_uid":"Eqz41mUb-HT4Z-Q2J0-LM6o-iciHokHBrGYt",
+                      //                     "persona_cedula":"11829328",
+                      //                     "apellidos_nombres":"HERNANDEZ CAMPOS OSWALDO ENRIQUES",
+                      //                     "dependencia_labora":"DIV. DE INFORMATICA Y SISTEMAS",
+                      //                     "cargo_labora":"COORD. SISTEMAS Y BASES DE DATOS",
+                      //                     "cargo_codigo":"20000C",
+                      //                     "cargo_denominacion":"TECNICO SUPERIOR UNIVERSI",
+                      //                     "municipio_nombre":"SUCRE"
+                      //                  }
+                      //               ];
+                      
+                      // var mydata =  [
+                      //                {
+                      //                   "persona_uid":"wQvNVxKi-96FI-apTX-D72o-b4CJlrtdGGUq",
+                      //                   "persona_cedula":"12269509",
+                      //                   "apellidos_nombres":"FIGUEROA VALLENILLA YSABEL CRISITNA",
+                      //                   "dependencia_labora":"COORD. SISTEMA DE GESTION ESCOLAR",
+                      //                   "cargo_labora":"ANALISTA SGE",
+                      //                   "cargo_codigo":"8030C",
+                      //                   "cargo_denominacion":"ASEADOR CONTRATADO",
+                      //                   "municipio_nombre":"SUCRE"
+                      //                }
+                      //             ];
+
+
+                      if (response.length == 1 ) {
+                        // console.log("es falso");
+                        $("#txt_nombre_funcionario").val('no encontrado');
+                      }else{
+                        
+                        var data_func =  JSON.parse(response);
+                        // console.log(typeof(data_func));
+                        // console.log(data_func);
+                        var tamanio = data_func.length;
+                        // console.log(tamanio);  
+                        // console.log(data_func); 
+                        var nombre = data_func[0]['apellidos_nombres'];
+                        $("#txt_nombre_funcionario").val(nombre);
+                        if (tamanio>=1) {
+                          //mostrar el cuadro de busqueda
+                          $('#cuadro_busqueda_datos_laborales').show();
+                          var $table2 = $('#table2').bootstrapTable('destroy' );
+                          var $table2 = $('#table2').bootstrapTable( { data : data_func } );
+                        }else{
+                          //No es necesario mostrar el cuadro de busqueda
+                          $('#cuadro_busqueda_datos_laborales').hide();
+                        }
+
+                      }
+                       
+                      
+                  },
+                  error: function () {
+                      $modal.modal('hide');
+                      showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item error!', 'danger');
+                  }
+              });
+                
+            }else{
+              alert("Debe ingresar los datos");
+            }
+            console.log(accion);
+        });
+
         
         $modal.find('#btn_enviar_periodo').click(function () {
             //console.log($(this).attr('id') + " --> " +  $(this).text());    
@@ -186,6 +301,13 @@
         ].join('');
     }
 
+    function actionFormatter2(value,row) {
+      // glyphicon-ok-circle
+      var icono1 = '<a class="seleccionar" href="javascript:" title="Seleccionar Registro"><i class="glyphicon glyphicon-green glyphicon glyphicon-ok-sign "></i></a>';
+        return icono1;
+    }
+
+
     function StatusFormatter(value, row) {
         var icon = "";
         //console.log(row.estatus);
@@ -224,6 +346,48 @@
             // alert($(this).attr('title'));
             // showAlert($(this).attr('title'), 'success');
             // showModal($(this).attr('title'), row);
+            // plan_codigodea: "OD04691901", 
+            // plan_codestadistico: "190018", 
+            // plan_codnomina: "123456", 
+            // plan_codnominadep: "", 
+            // plan_nombre: "U E BOLIVARIANA RIO GRANDE",
+            // 
+            
+            
+            
+            $('#cuadro_busqueda_datos_laborales').hide();
+            var $table2 = $('#table2').bootstrapTable('destroy' );
+            // var $table2 = $('#table2').bootstrapTable( { data : data_func } );
+
+
+            // 
+            title_plan_nombre = $(this).attr('title') + ' - ' + row['plan_nombre'] + ' [' + row['plan_codigodea'] + ']';  
+
+            // LIMPIAR CAMPOS DE FORMULARIO AL ABRIR LA MODAL
+            $modal_asignar_autoridades.find('input[name="txt_id_plantel"]').val('');
+            $modal_asignar_autoridades.find('input[name="txt_id_periodo"]').val('');
+            $modal_asignar_autoridades.find('input[name="txt_id_personal"]').val('');
+            $modal_asignar_autoridades.find('input[name="txt_cedula_personal"]').val('');
+            $modal_asignar_autoridades.find('input[name="txt_nombre_funcionario"]').val('');
+
+            $modal_asignar_autoridades.find('input[name="txt_id_plantel"]').val(row['plan_uid']);
+
+            $modal_asignar_autoridades.find('.modal-title').text(title_plan_nombre);
+
+
+            
+            
+          
+            
+
+
+
+            
+
+            $("#btn_enviar_modal").attr('disabled', true);
+            // $("#btn_enviar_modal").hide();
+
+
             showModalName($modal_asignar_autoridades,$(this).attr('title'), row);
               
         },
@@ -252,12 +416,64 @@
         }
     };
 
+    window.actionEvents2 = {
+        
+        'click .seleccionar': function (e, value, row) {
+            accion='selecionar_funcionario';
+            console.log(accion, row);
+
+            // // [
+           // { 
+           // empleado_dep_uid: "demkjIqP-OsQE-MA8h-9aaR-GXtX0dWsiJMG", 
+           // persona_uid: "Eqz41mUb-HT4Z-Q2J0-LM6o-iciHokHBrGYt", 
+           // persona_cedula: "11829328", 
+           // apellidos_nombres: "HERNANDEZ CAMPOS OSWALDO ENRIQUES", 
+           // dependencia_labora: "DIV. DE INFORMATICA Y SISTEMAS", 
+           // cargo_labora: "COORD. SISTEMAS Y BASES DE DATOS", 
+           // categoria_cargo_descripcion: "ADMINISTRATIVO", 
+           // cargo_codigo: "10000C", 
+           // cargo_denominacion: "BACHILLER CONTRATADO", 
+           // horas_laboradas: "0/0",
+           // empleado_fechaingreso:"2011-01-01" 
+           // municipio_nombre":"SUCRE" 
+           // }
+            // // ]
+
+
+            // $("#txt_id_personal").val(row['empleado_dep_uid']);
+
+            // ocultamos el cuadro de seleccion de cargo funcional 
+            $('#cuadro_busqueda_datos_laborales').fadeOut(300);
+            // mostramos los datos laborales seleccionados
+            // $('#cuadro_datos_laborales').fadeIn(300);
+            // // mostramos el formulario para ingresar los datos de permisos a solicitar
+            // $('#cuadro_solicitud_permiso').fadeIn(300);
+
+            // //  cargamos los valores en pantalla
+            // $("#txt_tipo_personal").val(row['categoria_cargo_descripcion']);
+            // $("#txt_id_cargo_funcional").val(row['empleado_dep_uid']);
+            // $("#txt_cargo_funcional").val(row['cargo_labora']);
+            // $("#txt_municipio").val(row['municipio_nombre']);
+            // $("#txt_id_lugar_trabajo").val(row['empleado_dep_uid']);
+            // $("#txt_lugar_trabajo").val(row['dependencia_labora']);
+
+            // //activamos el boton de enviar formulario
+            // $modal.find('button[name="btn_enviar_modal"]').show();
+
+            // Cargar_Combo_Permisos(row['categoria_cargo_descripcion'].toLowerCase());
+
+          
+        }
+    };
+
+
     function showModalName(ventana,title, row) {
       // body...
       console.log(accion);
       console.log(ventana);
       console.log(title);
       console.log(row);
+
       // if (accion=='agregar_registros') {
       //   $modal.find('button[name="btn_enviar_periodo"]').text("Modificar Plantel");
       // }
@@ -435,5 +651,5 @@
               .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
         setTimeout(function () {
             $alert.hide();
-        }, 50000);
+        }, 5000);
     }

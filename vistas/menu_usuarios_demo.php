@@ -31,6 +31,34 @@ $cargousuario = $_SESSION["sesion_cargo"];
 
 -->
  
+
+
+<!-- ALMACEN  -->
+<!-- 
+   #    #       #     #    #     #####  ####### #     #
+  # #   #       ##   ##   # #   #     # #       ##    #
+ #   #  #       # # # #  #   #  #       #       # #   #
+#     # #       #  #  # #     # #       #####   #  #  #
+####### #       #     # ####### #       #       #   # #
+#     # #       #     # #     # #     # #       #    ##
+#     # ####### #     # #     #  #####  ####### #     #
+-->
+
+<?php if ($nivelusuario=='root' || $nivelusuario=='almacen') {?>     <!--0:Admin,-->
+<!--USUARIOS DE INFORMATICA-->
+<li class="treeview">
+    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Almacén</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li id="menu_admin_registrar_productos"><a href="javascript:void(0);"></i><i class="fa  fa-file-o"></i> <span>Productos</span></a></li>
+    </ul>
+</li>
+
+
+<?php }?>
+
+
+
+
 <!-- ROOT  -->
 <!-- 
 ######  ####### ####### #######
@@ -60,6 +88,7 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 <?php }?>
+
 
 
 <!-- 

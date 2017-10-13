@@ -330,6 +330,33 @@
 	 // 
 	 // 
 	 // 
+	 // 
+	// ALMACEN
+	
+	//    #    #       #     #    #     #####  ####### #     #
+	//   # #   #       ##   ##   # #   #     # #       ##    #
+	//  #   #  #       # # # #  #   #  #       #       # #   #
+	// #     # #       #  #  # #     # #       #####   #  #  #
+	// ####### #       #     # ####### #       #       #   # #
+	// #     # #       #     # #     # #     # #       #    ##
+	// #     # ####### #     # #     #  #####  ####### #     #
+
+	
+	$('#menu_admin_registrar_productos').on("click", function(event){
+		console.log($(this).attr('id') + " --> " +  $(this).text());
+	});
+
+	// ADMIN - ROOT - ADMINISTRAR - PLANTELES
+	$("#menu_admin_registrar_productos").on("click", function(event){
+		var vista = 'vistas/vista_admin_registrar_productos.php';
+		var controlador = 'controladores/controller.admin.productos.js';
+		var contenedor = '';
+		var subnivel= 'Administrar - ' + $(this).text();
+		var parametros = 'dptouser='+dptouser + '&cargouser='+cargouser + '&userestatus='+userestatus +  '&userced='+userced + '&';
+		CargarHtml(vista,controlador,contenedor,subnivel,parametros);
+	});
+
+
 	// ROOT
 	// ######  ####### ####### #######
 	// #     # #     # #     #    #

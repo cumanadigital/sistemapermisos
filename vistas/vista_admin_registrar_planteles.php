@@ -31,30 +31,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
           
           <div class="row">
             <div class="col-sm12 col-md-12">
-             <!--  <table id="table"
-                      data-show-refresh="true"
-                      data-show-columns="true"
-                      data-search="true"
-                      data-pagination="true"
-                      data-query-params="queryParams"
-                    data-toolbar="#toolbar1"
-              > -->
-                <!-- <thead> -->
-                  <!-- <tr> -->
-                      <!--<th data-field="state" data-checkbox="true"></th>-->
-                   <!-- <th data-field="id_periodo" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Id</th> -->
-                   <!-- <th data-field="nombre_periodo" data-filter-control="select" data-sortable="false" data-halign="center"  >Nombre</th>                    -->
-                       <!-- <th data-field="fecha_recaudo_ini" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Recaudo</th> -->
-                       <!-- <th data-field="fecha_recaudo_fin" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Recaudo</th> -->
-                   <!-- <th data-field="fecha_inicio" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Periodo</th> -->
-                   <!-- <th data-field="fecha_cierre" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Periodo</th> -->
-                   <!-- <th data-field="estatus" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center" data-formatter="StatusFormatter" >Estatus</th> -->
-                   <!-- <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Acción</th> -->
-                 <!-- </tr> -->
-                <!-- </thead> -->
-              <!-- </table> -->
-
-                <table id="table"
+              <table id="table"
                data-show-refresh="true"
                data-show-columns="true"
                data-search="true"
@@ -64,27 +41,27 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                data-query-params="queryParams"
                data-toolbar=".toolbar"
                data-filter-control="true">
-            <thead>
-            <tr>
-               <!-- <th data-field="name">Name</th>
-                <th data-field="stargazers_count">Stars</th>-->
-                <!--<th data-field="listado_nacionalidad">Nac</th>-->
-                 <!--<th data-field="state" data-checkbox="true"></th>-->
-                   <th data-field="plan_uid"          data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Id</th>
-                   <th data-field="plan_codigodea"    data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Cod Plantel</th>
-                   <th data-field="plan_nombre"       data-filter-control="input"   data-sortable="true" data-halign="center" data-align="left"   >Plantel</th>
-                   <th data-field="plan_codnomina"    data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Cod. Nómina</th>                   
-                   <th data-field="municipio_nombre"  data-filter-control="select"  data-sortable="true" data-halign="center" data-align="center" >Municipio</th>
-                   <th data-field="parroquia_nombre"  data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Parroquia</th>
-                   <th data-field="md_nombre"         data-filter-control="select"  data-sortable="true" data-halign="center" data-align="center" >Modalidad</th>
-                
-                <th data-field="action"
-                    data-align="center"
-                    data-formatter="actionFormatter"
-                    data-events="actionEvents">Action</th>
-            </tr>
-            </thead>
-        </table>
+                <thead>
+                <tr>
+                   <!-- <th data-field="name">Name</th>
+                    <th data-field="stargazers_count">Stars</th>-->
+                    <!--<th data-field="listado_nacionalidad">Nac</th>-->
+                     <!--<th data-field="state" data-checkbox="true"></th>-->
+                       <th data-field="plan_uid"          data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Id</th>
+                       <th data-field="plan_codigodea"    data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Cod Plantel</th>
+                       <th data-field="plan_nombre"       data-filter-control="input"   data-sortable="true" data-halign="center" data-align="left"   >Plantel</th>
+                       <th data-field="plan_codnomina"    data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Cod. Nómina</th>                   
+                       <th data-field="municipio_nombre"  data-filter-control="select"  data-sortable="true" data-halign="center" data-align="center" >Municipio</th>
+                       <th data-field="parroquia_nombre"  data-filter-control="input"   data-sortable="true" data-halign="center" data-align="center" >Parroquia</th>
+                       <th data-field="md_nombre"         data-filter-control="select"  data-sortable="true" data-halign="center" data-align="center" >Modalidad</th>
+                    
+                    <th data-field="action"
+                        data-align="center"
+                        data-formatter="actionFormatter"
+                        data-events="actionEvents">Acción</th>
+                </tr>
+              </thead>
+            </table>
 
             </div> <!--// fin col-sm-->
           </div><!--// fin row-->
@@ -92,7 +69,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 //
 ?>
           
-          <form class="form-horizontal" id="form_modal_registros">	
+          <form class="form-horizontal" id="form_modal_registros" >	
             <div id="modal_registros" class="modal fade">
               <!-- <div class="modal-dialog"> -->
               <div class="modal-dialog" id="modal-dialog-xl">
@@ -162,7 +139,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 
           <form class="form-horizontal" id="form_ventana_modal_asignar_autoridades" > 
             <div id="ventana_modal_asignar_autoridades" class="modal fade">
-              <div class="modal-dialog" id="modal-dialog-xl">
+              <div class="modal-dialog" id="modal-dialog-xl2">
                 <div class="modal-content">
                   
                   <div class="modal-header">
@@ -179,8 +156,8 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                               <div class="form-group">
                               <label for="txt_cedula_personal" class="col-sm-4 control-label">Cédula</label>
                               <div class="col-sm-8">
-                              <input class="form-control" id="txt_id_jefeinmediato"  type="hidden" name="txt_id_jefeinmediato">
-                              <input class="form-control" id="txt_id_permiso"  type="hidden" name="txt_id_permiso">
+                              <input class="form-control" id="txt_id_plantel"  type="hidden" name="txt_id_plantel">
+                              <input class="form-control" id="txt_id_periodo"  type="hidden" name="txt_id_periodo">
                               <input class="form-control" id="txt_id_personal" type="hidden" name="txt_id_personal">
                               <div class="input-group">
                                 <input class="form-control" id="txt_cedula_personal" type="text"   name="txt_cedula_personal" placeholder="Buscar" >
@@ -207,23 +184,21 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                         </div>
 
 
-
+<!-- 
                         <div class="row">
-                            <div class="col-sm-4">
-                              <!-- //code -->
-                              <div class="form-group">
+                          
+                          <div class="col-sm-4">
+                            <div class="form-group">
                               <label for="txt_telefono_residencia" class="col-sm-4 control-label">Teléfono Residencial</label>
                               <div class="col-sm-8">
                                 <input class="form-control" id="txt_telefono_residencia" type="tel" name="txt_telefono_residencia" placeholder="Ejm 0293-1234567" 
                                 pattern="\([0-9]{4}\)[-][0-9]{7}[0-9]{4}" 
-                                title="Formato validos (0293)432-1234"
-                                 >
+                                title="Formato validos (0293)432-1234">
                               </div>
                             </div>
                           </div>
 
                           <div class="col-sm-4">
-                              <!-- //code -->
                               <div class="form-group">
                               <label for="txt_telefono_celular" class="col-sm-4 control-label">Teléfono Celular</label>
                               <div class="col-sm-8">
@@ -240,7 +215,6 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                           </div>
 
                           <div class="col-sm-4">
-                            <!-- //code -->
                             <div class="form-group">
                               <label for="txt_nombre_funcionario" class="col-sm-4 control-label">Correo Elect.</label>
                               <div class="col-sm-8">
@@ -250,10 +224,9 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                           </div>
 
                         </div>
+ -->                        
 
-                        
-
-                        <div  id="cuadro_datos_laborales">
+                        <div  id="cuadro_datos_laborales" style="display: none;">
 
                             <div class="row" >
                               <!-- col1 -->
@@ -314,11 +287,42 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 
 
 
-                        <div class="row" id="cuadro_busqueda_datos_laborales">
+                        <div class="row" id="cuadro_busqueda_datos_laborales"  style="display: none;">
                             <!-- col1 -->
                             <div class="col-sm-12">
                               <!-- //code -->
                               <table id="table2"
+                                    data-show-refresh="false"
+                                    data-show-columns="false"
+                              >
+                                <thead>
+                                  <tr>
+                                   <th data-field="municipio_nombre" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"    >Municipio</th>
+                                   <th data-field="categoria_cargo_descripcion" data-filter-control="select" data-sortable="false" data-halign="center"             >Personal</th>                   
+                                   <th data-field="cargo_labora" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"        >Cargo Funcional</th>
+                                   <th data-field="dependencia_labora" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Lugar de Trabajo</th>
+                                   <th data-field="cargo_codigo" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"        >Código</th>
+                                   <th data-field="cargo_denominacion" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Cargo Nominal</th>
+                                   <th data-field="horas_laboradas" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Horas Doc/Adm</th>
+
+                                   <th data-field="empleado_fechaingreso" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fecha Ingr.</th>
+
+                                   
+                                   <th data-field="action" data-align="center" data-formatter="actionFormatter2" data-events="actionEvents2"                        >Acción</th>
+                                 </tr>
+                                </thead>
+                              </table>
+                            </div>
+                            <!-- cierre -->
+                            <br>
+                        </div>
+
+
+                         <div class="row" id="cuadro_personal_asignado" style="display: none;">
+                            <!-- col1 -->
+                            <div class="col-sm-12">
+                              <!-- //code -->
+                              <table id="table222"
                                     data-show-refresh="false"
                                     data-show-columns="false"
                               >
@@ -339,6 +343,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                             <!-- cierre -->
                             <br>
                         </div>
+
 
                         
                         
@@ -464,7 +469,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                   
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Cerrar</button>
-                      <button type="button" name="btn_enviar_modal" id="btn_enviar_modal"  class="btn btn-primary submit"><i class="fa fa-save"></i> Enviar</button>
+                      <button type="button" name="btn_enviar_modal" id="btn_enviar_modal"  class="btn btn-primary submit"><i class="fa fa-save"></i> Registrar</button>
                     </div>
                   
                   
