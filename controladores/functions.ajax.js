@@ -366,7 +366,7 @@
 	// #    #  #     # #     #    #
 	// #     # ####### #######    #
 	
-	$('#menu_admin_registrar_planteles').on("click", function(event){
+	$('#menu_admin_registrar_planteles, #menu_admin_informacion_laboral').on("click", function(event){
 		console.log($(this).attr('id') + " --> " +  $(this).text());
 	});
 
@@ -379,6 +379,17 @@
 		var parametros = 'dptouser='+dptouser + '&cargouser='+cargouser + '&userestatus='+userestatus +  '&userced='+userced + '&';
 		CargarHtml(vista,controlador,contenedor,subnivel,parametros);
 	});
+
+	// ADMIN - ROOT - INFORMACION LABORAL
+	$("#menu_admin_informacion_laboral").on("click", function(event){
+		var vista = 'vistas/vista_admin_informacion_laboral.php';
+		var controlador = 'controladores/controller.admin.informacion.laboral.js';
+		var contenedor = '';
+		var subnivel= 'Administrar - ' + $(this).text();
+		var parametros = 'dptouser='+dptouser + '&cargouser='+cargouser + '&userestatus='+userestatus +  '&userced='+userced + '&';
+		CargarHtml(vista,controlador,contenedor,subnivel,parametros);
+	});
+
 
 
 	 // ADMIN - INFORMATICA
