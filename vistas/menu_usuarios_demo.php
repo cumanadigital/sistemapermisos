@@ -79,6 +79,15 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 
+<!--USUARIOS DE INFORMATICA-->
+<li class="treeview">
+    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Dependencias</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li id="menu_admin_informacion_laboral"><a href="javascript:void(0);"></i><i class="glyphicon glyphicon-user"></i> <span>Información Laboral</span></a></li>
+        <li id="menu_admin_cargar_info_laboral"><a href="javascript:void(0);"></i><i class="glyphicon glyphicon-upload"></i> <span>Cargar Planilla</span></a></li>
+    </ul>
+</li>
+
 <!--PERFIL DE USUARIOS-->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
