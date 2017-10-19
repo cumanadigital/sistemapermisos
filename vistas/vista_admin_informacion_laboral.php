@@ -8,7 +8,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
     <div class="box box-solid box-primary ">
       <!--  BOX HEADER      -->
       <div class="box-header with-border">
-        <h3 class="box-title">Planteles</h3>
+        <h3 class="box-title">Datos Caracterizados</h3>
         <div class="box-tools pull-right">
           <!--<button id="boton_minus_busqueda" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>-->
         </div><!-- /.box-tools -->
@@ -21,36 +21,16 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
       <!--CONTENIDO AQUI-->
 
           <div class="row"> 
-            <div class="col-sm12 col-md-12">
+            <!-- <div class="col-sm12 col-md-12">
               <p class="toolbar" id="toolbar1">
-                <a class="create btn btn-default" id="btn_crear_periodo"href="javascript:">Agregar Plantel</a>
+                <a class="create btn btn-default" id="btn_crear_registro"href="javascript:">Botón</a>
                 <span class="alert"></span>
               </p>
-            </div> <!--// fin col-sm-->
+            </div> --> <!--// fin col-sm-->
           </div>	<!--// fin row-->
           
           <div class="row">
             <div class="col-sm12 col-md-12">
-<!--               <table id="table22"
-                    data-show-refresh="true"
-                    data-show-columns="true"
-                    data-search="true"
-                    data-pagination="true"
-                    data-query-params="queryParams"
-                    data-toolbar="#toolbar1"
-              >
-                <thead>
-                  <tr>
-                   <th data-field="id_periodo" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Id</th>
-                   <th data-field="nombre_periodo" data-filter-control="select" data-sortable="false" data-halign="center"  >Nombre</th>                   
-                   <th data-field="fecha_inicio" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Inicio Periodo</th>
-                   <th data-field="fecha_cierre" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Fin Periodo</th>
-                   <th data-field="estatus" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center" data-formatter="StatusFormatter" >Estatus</th>
-                   <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Acción</th>
-                 </tr>
-                </thead>
-              </table> -->
-
               <table id="table"
                     data-show-refresh="true"
                     data-show-columns="true"
@@ -111,7 +91,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                     <th data-field="nivel_instruccion" data-sortable="true" data-halign="center" data-align="center"  >Nivel<br>Instrucción</th>
                     <th data-field="fecha_ingreso" data-sortable="true" data-halign="center" data-align="center"  >Fecha<br>Ingreso</th>
                     <th data-field="vacaciones_vencidas" data-sortable="true" data-halign="center" data-align="center" >Vacaciones<br>Vencidas</th>
-                    <th data-field="unir3" data-sortable="true" data-halign="center" data-align="center" data-formatter="UnirFormatter3" >Dependencia<br>Nómina Laboral</th>
+                    <th data-field="unir3" data-sortable="true" data-halign="center" data-align="center" data-formatter="UnirFormatter3" >Dependencia<br>Nómina & Laboral</th>
                     <!-- <th data-field="horas" data-sortable="true" data-halign="center" data-align="center"  >Horas</th> -->
                     <th data-field="area_formacion" data-sortable="true" data-halign="center" data-align="center"  >Área Formación</th>
                     <th data-field="unir_medico" data-sortable="true" data-halign="center" data-align="center" data-formatter="UnirFormatter4" >Datos<br>Médicos</th>

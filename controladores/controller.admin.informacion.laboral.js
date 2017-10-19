@@ -22,20 +22,20 @@
   
     function UnirFormatter(value, row) {
         // console.log(row);
-        return ['Hab: ' + row.telf_hab, 'Cel: ' + row.telf_movil].join(' ');
+        return ['Habitación: ' + row.telf_hab, '<br />Célular: ' + row.telf_movil].join(' ');
     }
     function UnirFormatter2(value, row) {
         // console.log(row); 
-        return ['Email: ' + row.email, 'Twitter: ' + row.twitter].join(' ');
+        return ['Email: ' + row.email, '<br />Twitter: ' + row.twitter].join(' ');
     }
 
     function UnirFormatter3(value, row) {
         // console.log(row); 
-        return ('Nómina: ' + row.cod_dependencia_cobro + '\n' + 'Laboral: ' + row.cod_dependencia_labora + '\n' + 'Horas: ' + row.horas);
+        return ('Nóminal:<br /><b>' + row.cod_dependencia_cobro + '</b><br />' + 'Laboral:<br /><b>' + row.cod_dependencia_labora + '</b><br />' + 'Horas: <b>' + row.horas) + '</b>';
     }
     function UnirFormatter4(value, row) {
         // console.log(row);
-        return ('Alergias: ' + row.alergias + ' \n Cirugias: ' + row.cirugias + '\n G. Sang: ' + row.grupo_sanguineo);
+        return ('Alergias: ' + row.alergias + '<br />Cirugias: ' + row.cirugias + '\n G. Sang: ' + row.grupo_sanguineo);
     }
 
   
