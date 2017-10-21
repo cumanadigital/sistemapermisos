@@ -278,23 +278,23 @@
 	// var nivel = 'Inicio';
 	var subnivel= 'Administrar - ' + $(this).text();
 
-	 // #     #  #######  #     #  #     # 
-	 // ##   ##  #        ##    #  #     # 
-	 // # # # #  #        # #   #  #     # 
-	 // #  #  #  #####    #  #  #  #     # 
-	 // #     #  #        #   # #  #     # 
-	 // #     #  #        #    ##  #     # 
-	 // #     #  #######  #     #   #####  
+	// #     #  #######  #     #  #     # 
+	// ##   ##  #        ##    #  #     # 
+	// # # # #  #        # #   #  #     # 
+	// #  #  #  #####    #  #  #  #     # 
+	// #     #  #        #   # #  #     # 
+	// #     #  #        #    ##  #     # 
+	// #     #  #######  #     #   #####  
 	//* * * * * * * * * * * * * * * * * * *
 	//* * * * * * * * * * * * * * * * * * *                                                                                 
 	//* * * * * * * * * * * * * * * * * * *
 	//* * * * * * * * * * * * * * * * * * *                                      
-	 // #####   ######  #####   ######  #  #              ######   ####   #####   ####  
-	 // #    #  #       #    #  #       #  #              #       #    #    #    #    # 
-	 // #    #  #####   #    #  #####   #  #       #####  #####   #    #    #    #    # 
-	 // #####   #       #####   #       #  #              #       #    #    #    #    # 
-	 // #       #       #   #   #       #  #              #       #    #    #    #    # 
-	 // #       ######  #    #  #       #  ######         #        ####     #     ####  
+	// #####   ######  #####   ######  #  #              ######   ####   #####   ####  
+	// #    #  #       #    #  #       #  #              #       #    #    #    #    # 
+	// #    #  #####   #    #  #####   #  #       #####  #####   #    #    #    #    # 
+	// #####   #       #####   #       #  #              #       #    #    #    #    # 
+	// #       #       #   #   #       #  #              #       #    #    #    #    # 
+	// #       ######  #    #  #       #  ######         #        ####     #     ####  
 	// - PERFIL
 	$("#perfil, #menu_admin_perfil, #menu_jefe_perfil, #menu_secre_perfil, #menu_juridica_perfil, #menu_director_perfil, #menu_bienestar_perfil, #menu_licencia_perfil").on("click", function(event){
 		var vista = 'vistas/vista_usuario_contrasena.php';
@@ -385,7 +385,17 @@
 		var vista = 'vistas/vista_admin_informacion_laboral.php';
 		var controlador = 'controladores/controller.admin.informacion.laboral.js';
 		var contenedor = '';
-		var subnivel= 'Administrar - ' + $(this).text();
+		var subnivel= 'Dependencias - ' + $(this).text();
+		var parametros = 'dptouser='+dptouser + '&cargouser='+cargouser + '&userestatus='+userestatus +  '&userced='+userced + '&';
+		CargarHtml(vista,controlador,contenedor,subnivel,parametros);
+	});
+
+	// ADMIN - ROOT - CARGAR PLANILLA INFORMACION LABORAL
+	$("#menu_admin_cargar_info_laboral").on("click", function(event){
+		var vista = 'vistas/vista_admin_cargar_informacion_laboral.php';
+		var controlador = 'controladores/controller.admin.cargar.informacion.laboral.js';
+		var contenedor = '';
+		var subnivel= 'Dependencias - ' + $(this).text();
 		var parametros = 'dptouser='+dptouser + '&cargouser='+cargouser + '&userestatus='+userestatus +  '&userced='+userced + '&';
 		CargarHtml(vista,controlador,contenedor,subnivel,parametros);
 	});
