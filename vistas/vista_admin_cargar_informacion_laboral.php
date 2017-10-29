@@ -72,8 +72,30 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
               </form>
             
         </div>
+
         <div class="col-sm-2 col-md-2"></div>
       </div>
+
+
+      <br><br>
+      <div class="row">
+          <div class="col-sm-2 col-md-2"></div>
+          <div class="col-sm-8 col-md-8">
+            <div class="form-group row">
+              <label class="control-label col-sm-3">Descarga Planilla</label>
+              <div class="col-xs-12">
+                
+                <button id="btn_descarga_planilla" class="btn btn-block btn-success">PLANILLA CONSOLIDADO FINAL SOLICITUD INTEGRAL DE INFORMACIÓN LABORAL.ods</button>        
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 col-md-2"></div>
+      </div>
+      <br><br>
+
+
+      
+
 
 
         

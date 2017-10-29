@@ -16,8 +16,21 @@
  
     $(function () {
         // create event
+        // 
+        $('#btn_descarga_planilla').click(function () {
+            accion ='btn_descarga_planilla';
+            // archivo =     
+            console.log(accion);
+            document.location = "files/NOMBRE_DEPENDENCIA_PLANILLA_CONSOLIDADO_FINAL_SOLICITUD_INTEGRAL_DE_INFORMACIÓN_LABORAL.ods";
+        });
+
     });
+
+
+
     //toolbar1
+    //
+    //
 
   
     // function UnirFormatter(value, row) {
