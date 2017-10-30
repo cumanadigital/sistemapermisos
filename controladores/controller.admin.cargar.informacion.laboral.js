@@ -8,6 +8,7 @@
     // var $table = $('#table').bootstrapTable({url: API_URL_info_laboral});
 
     var txt_municipio               = $("#txt_municipio");
+    var txt_centro_trabajo          = $("#txt_centro_trabajo");
 
     // $modal = $('#modal_registros').modal({show: false});
     
@@ -22,6 +23,10 @@
         // create event
         // 
         Cargar_Combo_Municipios();
+
+
+        // $('#txt_centro_trabajo').select2();
+
 
         $('#btn_descarga_planilla').click(function () {
             accion ='btn_descarga_planilla';
@@ -71,39 +76,45 @@
 
 
         $("#txt_municipio").change(function () {
-            console.info($(this).val());
+            // console.info($(this).val());
             // console.info($(this));
-            // $("#municipio option:selected").each(function () {
-            //     id_category = $(this).val();
-            //     console.info(id_category);
+            txt_centro_trabajo.empty();
+            $("#txt_municipio option:selected").each(function () {
+                id_category = $(this).val();
+                console.info(id_category);
+                Cargar_Combo_Centros_Locales(id_category);
+
             //     $.post("parroquias.php", { id_category: id_category }, function(data){
             //         $("#parroquia").html(data);
             //     });
-            // });
+            });
         })
 
 
 
-        function Cargar_Combo_Centros_Locales(){
-            // Limpiamos el contenido del select tipos de permisos
-            txt_municipio.empty();
-            // txt_municipio.append("<option value='' >Seleccione</option>");
-            // txt_municipio.append("<optgroup label='Permisos Obligatorios'>");
-            var accion = "consultar_municipios";
+        function Cargar_Combo_Centros_Locales(id_categoria){
+            // // Limpiamos el contenido del select tipos de permisos
+            txt_centro_trabajo.empty();
+            txt_centro_trabajo.append("<option value='' >Cargando</option>");
+            // // txt_municipio.append("<optgroup label='Permisos Obligatorios'>");
+            var accion = "consultar_centros_trabajo";
             console.log(accion);
+            console.info(id_categoria);
 
             var tipo_personal = '1'; // 1-administrativo 2-docente 3-obrero
             var tipo_usuario = 'root';
             $.ajax({
                 type: "GET",
-                url: "servicios/services.admin.municipios.php",
-                data: "&accion=" + accion + "&tipo_personal=" + tipo_personal + "&tipo_usuario=" + tipo_usuario + "&token1="+rand_code(),
+                url: "servicios/services.admin.planteles.php",
+                data: "&accion=" + accion + "&id_categoria=" + id_categoria + "&tipo_personal=" + tipo_personal + "&tipo_usuario=" + tipo_usuario + "&token1="+rand_code(),
                 success: function(response)
                 {
                     // console.log(response);
-                    var arreglo_municipio = JSON.parse(response);
-                    $.each(arreglo_municipio, function(i,item){
-                        // console.log(item);
+                    txt_centro_trabajo.empty();
+                    // txt_centro_trabajo.append("<option value='' >Cargando</option>");
+                    var arreglo_centro_trabajo = JSON.parse(response);
+                    $.each(arreglo_centro_trabajo, function(i,item){
+                        console.log(item.plan_uid +" - " + item.plan_codigodea + " - " + item.plan_nombre);
                         // { 
                         //     municipio_uid: "Llr6wefs-DICV-8g4z-IoRq-caL8Y4awlOaV", 
                         //     municipio_nombre: "SUCRE", 
@@ -112,7 +123,10 @@
                         //     municipio_codigo: "14", 
                         //     municipio_codigo_n: "309" 
                         // }
-                        txt_municipio.append("<option value='"+item.municipio_uid+"' >" + item.municipio_codigo + " - " + item.municipio_nombre + "</option>");
+                        
+                        // txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" + item.plan_codigodea + " - " + item.plan_nombre + "</option>");
+                        txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" +"(<b>"+item.plan_codigodea + ")<b> - " + item.plan_nombre + "</option>");
+                        //txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" + item.plan_nombre + " [ " + item.plan_codigodea + " ]" + "</option>");
                     })
                 }
             });

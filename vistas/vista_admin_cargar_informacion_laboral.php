@@ -38,14 +38,13 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                 <div class="form-group row">
                   <label class="control-label col-sm-3">Centro de Trabajo:</label>
                   <div class="col-xs-6">
-                    <select name="municipio" class="form-control" id="municipio">
+                    <select name="txt_centro_trabajo" class="form-control" id="txt_centro_trabajo">
                       <option value="" disabled selected>Seleccione</option>
-                      <?php
-                      // $sql=pg_query("select * from municipio");
-                      // while ($cys_row = pg_fetch_array($sql)) {
-                      ?>
-                      <!-- <option value="<?php echo $cys_row['id_municipio']; ?>"><?php echo $cys_row['nombre_municipio']; ?></option> -->
-                      <?php // } ?>
+                     <!--  <option value="">a</option>
+                      <option value="">b</option>
+                      <option value="">c</option>
+                      <option value="">d</option>
+                      <option value="">e</option> -->
                     </select>
                   </div>
                 </div>
