@@ -31,15 +31,7 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                 <div class="form-group row">
                   <label class="control-label col-sm-3">Municipio:</label>
                   <div class="col-xs-6">
-                    <select name="municipio" class="form-control" id="municipio">
-                      <option value="" disabled selected>Seleccione</option>
-                      <?php
-                      $sql=pg_query("select * from municipio");
-                      while ($cys_row = pg_fetch_array($sql)) {
-                      ?>
-                      <option value="<?php echo $cys_row['id_municipio']; ?>"><?php echo $cys_row['nombre_municipio']; ?></option>
-                      <?php } ?>
-                    </select>
+                    <select name="txt_municipio" id="txt_municipio" class="form-control"></select>
                   </div>
                 </div>
 
@@ -49,11 +41,11 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                     <select name="municipio" class="form-control" id="municipio">
                       <option value="" disabled selected>Seleccione</option>
                       <?php
-                      $sql=pg_query("select * from municipio");
-                      while ($cys_row = pg_fetch_array($sql)) {
+                      // $sql=pg_query("select * from municipio");
+                      // while ($cys_row = pg_fetch_array($sql)) {
                       ?>
-                      <option value="<?php echo $cys_row['id_municipio']; ?>"><?php echo $cys_row['nombre_municipio']; ?></option>
-                      <?php } ?>
+                      <!-- <option value="<?php echo $cys_row['id_municipio']; ?>"><?php echo $cys_row['nombre_municipio']; ?></option> -->
+                      <?php // } ?>
                     </select>
                   </div>
                 </div>
