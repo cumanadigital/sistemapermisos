@@ -99,8 +99,8 @@
             // // txt_municipio.append("<optgroup label='Permisos Obligatorios'>");
             var accion = "consultar_centros_trabajo";
             console.log(accion);
-            console.info(id_categoria);
-
+            // console.info(id_categoria);
+            // 
             var tipo_personal = '1'; // 1-administrativo 2-docente 3-obrero
             var tipo_usuario = 'root';
             $.ajax({
@@ -111,23 +111,27 @@
                 {
                     // console.log(response);
                     txt_centro_trabajo.empty();
-                    // txt_centro_trabajo.append("<option value='' >Cargando</option>");
-                    var arreglo_centro_trabajo = JSON.parse(response);
-                    $.each(arreglo_centro_trabajo, function(i,item){
-                        console.log(item.plan_uid +" - " + item.plan_codigodea + " - " + item.plan_nombre);
-                        // { 
-                        //     municipio_uid: "Llr6wefs-DICV-8g4z-IoRq-caL8Y4awlOaV", 
-                        //     municipio_nombre: "SUCRE", 
-                        //     municipio_capital: "Cumaná", 
-                        //     municipio_estado: "17", 
-                        //     municipio_codigo: "14", 
-                        //     municipio_codigo_n: "309" 
-                        // }
-                        
-                        // txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" + item.plan_codigodea + " - " + item.plan_nombre + "</option>");
-                        txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" +"(<b>"+item.plan_codigodea + ")<b> - " + item.plan_nombre + "</option>");
-                        //txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" + item.plan_nombre + " [ " + item.plan_codigodea + " ]" + "</option>");
-                    })
+                    if (response=="false") {
+                        txt_centro_trabajo.append("<option value=''>Sin Resultados</option>");
+                        // alert('false');
+                    }else{
+                        var arreglo_centro_trabajo = JSON.parse(response);
+                        $.each(arreglo_centro_trabajo, function(i,item){
+                            // console.log(item.plan_uid +" - " + item.plan_codigodea + " - " + item.plan_nombre);
+                            // { 
+                            //     municipio_uid: "Llr6wefs-DICV-8g4z-IoRq-caL8Y4awlOaV", 
+                            //     municipio_nombre: "SUCRE", 
+                            //     municipio_capital: "Cumaná", 
+                            //     municipio_estado: "17", 
+                            //     municipio_codigo: "14", 
+                            //     municipio_codigo_n: "309" 
+                            // }
+                            
+                            // txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" + item.plan_codigodea + " - " + item.plan_nombre + "</option>");
+                            txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" +"(<b>"+item.plan_codigodea + ")<b> - " + item.plan_nombre + "</option>");
+                            //txt_centro_trabajo.append("<option value='"+item.plan_uid+"' >" + item.plan_nombre + " [ " + item.plan_codigodea + " ]" + "</option>");
+                        });
+                    } 
                 }
             });
         };
