@@ -2,7 +2,6 @@
 	// NOTA: Esta enlazado con postgres
 	// require('../conf/config.postgres.php');
 	// require('../apiv3.0/funciones/postgres.class.php');
-
 	// NOTA: Esta enlazado con mysql
 	// require('../conf/config.login.php');
 	// require('../apiv3.0/funciones/mysql.class.php'); 
@@ -61,8 +60,6 @@
 		case 'consultar_centros_trabajo':
 			consultar_registros_filtro($datos);
 		break;
-		
-
 	}
 ?>
 <?php
@@ -79,8 +76,8 @@
 		// 				estatus, 
 		// 				observacion
 		// 		FROM permisos.periodo ORDER BY id_periodo";
-
-		$sql="	SELECT pl.*, deno.*,tpd.*,estplan.*,clase.*,cat.*,plancond.*,tpmat.*,turno.*, mod.*,est.*,mun.*,parr.*,pl.plan_ciudad
+		// 
+		$sql=  "SELECT pl.*, deno.*,tpd.*,estplan.*,clase.*,cat.*,plancond.*,tpmat.*,turno.*, mod.*,est.*,mun.*,parr.*,pl.plan_ciudad
 				FROM plantel_datos.plantel as pl
 				 LEFT JOIN comun.dependencia as dep ON(dep.dependencia_codigonomina = pl.plan_codnomina ) 
 				 LEFT JOIN plantel_datos.denominacion as deno ON(deno.de_uid = pl.plan_denominacion )
@@ -97,7 +94,6 @@
 				 LEFT JOIN comun.parroquia as parr  ON(parr.parroquia_uid = pl.plan_parroquia )
 				 LEFT JOIN comun.ciudad as ciud ON(ciud.ciudad_uid = pl.plan_ciudad)
 				 ORDER BY mun.municipio_nombre, parr.parroquia_nombre";
-
 		$dato=consultar($sql,$Postgres);
 		// ver_arreglo($dato);
 		$NumeroDeFilas = $Postgres->NumeroDeFilas();
@@ -112,34 +108,104 @@
 	function consultar_registros_filtro($datos) {
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 		$id_categoria = $datos['id_categoria'];
-		$sql="	SELECT pl.*, deno.*,tpd.*,estplan.*,clase.*,cat.*,plancond.*,tpmat.*,turno.*, mod.*,est.*,mun.*,parr.*,pl.plan_ciudad
+		// $sql=  "SELECT pl.*, deno.*,tpd.*,estplan.*,clase.*,cat.*,plancond.*,tpmat.*,turno.*, mod.*,est.*,mun.*,parr.*,pl.plan_ciudad
+		// 		FROM plantel_datos.plantel as pl
+		// 		LEFT JOIN comun.dependencia as dep ON(dep.dependencia_codigonomina = pl.plan_codnomina ) 
+		// 		LEFT JOIN plantel_datos.denominacion as deno ON(deno.de_uid = pl.plan_denominacion )
+		// 		LEFT JOIN plantel_datos.tipo_dependencia as tpd  ON(tpd.td_uid = plan_tipodep )
+		// 		LEFT JOIN plantel_datos.estatus_plantel as estplan  ON(estplan.ep_uid = plan_estatus )
+		// 		LEFT JOIN plantel_datos.clase as clase  ON(clase.cl_uid = ep_uid )
+		// 		LEFT JOIN plantel_datos.categoria  as cat  ON(cat.ct_uid = plan_categoria )
+		// 		LEFT JOIN plantel_datos.condestudio  as plancond  ON(plancond.ce_uid = pl.plan_condicionestudio )
+		// 		LEFT JOIN plantel_datos.tipo_matricula  as tpmat  ON(tpmat.tm_uid = pl.plan_tipomatricula )
+		// 		LEFT JOIN plantel_datos.turno  as turno  ON(turno.tu_uid = pl.plan_turno )
+		// 		LEFT JOIN plantel_datos.modalidad as mod  ON(mod.md_uid = pl.plan_modalidad )
+		// 		LEFT JOIN comun.estado as est  ON(est.estado_codigo = cast(pl.plan_estado as int) )
+		// 		LEFT JOIN comun.municipio as mun  ON(mun.municipio_uid = pl.plan_municipio  )
+		// 		LEFT JOIN comun.parroquia as parr  ON(parr.parroquia_uid = pl.plan_parroquia )
+		// 		LEFT JOIN comun.ciudad as ciud ON(ciud.ciudad_uid = pl.plan_ciudad)
+		// 		WHERE plan_municipio LIKE '$id_categoria' 
+		// 		--ORDER BY pl.plan_codigodea
+		// 		ORDER BY pl.plan_nombre;";
+		
+		$sql=  "SELECT 	pl.plan_uid, pl.plan_codigodea ,pl.plan_nombre, pl.plan_municipio, mun.municipio_uid, mun.municipio_nombre 
 				FROM plantel_datos.plantel as pl
-				LEFT JOIN comun.dependencia as dep ON(dep.dependencia_codigonomina = pl.plan_codnomina ) 
-				LEFT JOIN plantel_datos.denominacion as deno ON(deno.de_uid = pl.plan_denominacion )
-				LEFT JOIN plantel_datos.tipo_dependencia as tpd  ON(tpd.td_uid = plan_tipodep )
-				LEFT JOIN plantel_datos.estatus_plantel as estplan  ON(estplan.ep_uid = plan_estatus )
-				LEFT JOIN plantel_datos.clase as clase  ON(clase.cl_uid = ep_uid )
-				LEFT JOIN plantel_datos.categoria  as cat  ON(cat.ct_uid = plan_categoria )
-				LEFT JOIN plantel_datos.condestudio  as plancond  ON(plancond.ce_uid = pl.plan_condicionestudio )
-				LEFT JOIN plantel_datos.tipo_matricula  as tpmat  ON(tpmat.tm_uid = pl.plan_tipomatricula )
-				LEFT JOIN plantel_datos.turno  as turno  ON(turno.tu_uid = pl.plan_turno )
-				LEFT JOIN plantel_datos.modalidad as mod  ON(mod.md_uid = pl.plan_modalidad )
+				-- LEFT JOIN comun.dependencia as dep ON(dep.dependencia_codigonomina = pl.plan_codnomina ) 
+				-- LEFT JOIN plantel_datos.denominacion as deno ON(deno.de_uid = pl.plan_denominacion )
+				-- LEFT JOIN plantel_datos.tipo_dependencia as tpd  ON(tpd.td_uid = plan_tipodep )
+				-- LEFT JOIN plantel_datos.estatus_plantel as estplan  ON(estplan.ep_uid = plan_estatus )
+				-- LEFT JOIN plantel_datos.clase as clase  ON(clase.cl_uid = ep_uid )
+				-- LEFT JOIN plantel_datos.categoria  as cat  ON(cat.ct_uid = plan_categoria )
+				-- LEFT JOIN plantel_datos.condestudio  as plancond  ON(plancond.ce_uid = pl.plan_condicionestudio )
+				-- LEFT JOIN plantel_datos.tipo_matricula  as tpmat  ON(tpmat.tm_uid = pl.plan_tipomatricula )
+				-- LEFT JOIN plantel_datos.turno  as turno  ON(turno.tu_uid = pl.plan_turno )
+				-- LEFT JOIN plantel_datos.modalidad as mod  ON(mod.md_uid = pl.plan_modalidad )
 				LEFT JOIN comun.estado as est  ON(est.estado_codigo = cast(pl.plan_estado as int) )
 				LEFT JOIN comun.municipio as mun  ON(mun.municipio_uid = pl.plan_municipio  )
-				LEFT JOIN comun.parroquia as parr  ON(parr.parroquia_uid = pl.plan_parroquia )
-				LEFT JOIN comun.ciudad as ciud ON(ciud.ciudad_uid = pl.plan_ciudad)
+				-- LEFT JOIN comun.parroquia as parr  ON(parr.parroquia_uid = pl.plan_parroquia )
+				-- LEFT JOIN comun.ciudad as ciud ON(ciud.ciudad_uid = pl.plan_ciudad)
 				WHERE plan_municipio LIKE '$id_categoria' 
 				--ORDER BY pl.plan_codigodea
-				ORDER BY pl.plan_nombre;
-				";
-				
+				ORDER BY pl.plan_nombre;";
 		// ver_arreglo($sql);		
 		$dato=consultar($sql,$Postgres);
+		// ver_arreglo($dato);
+		// Array
+		// 	(
+		// 	    [0] => Array
+		// 	        (
+		// 	            [plan_uid] => 640
+		// 	            [plan_codigodea] => OD14861911
+		// 	            [plan_codestadistico] => 191672
+		// 	            [plan_codnomina] => 
+		// 	            [plan_codnominadep] => 
+		// 	            [plan_nombre] => C E I LA CHAGUARAMA
+		// 	            [plan_denominacion] => 
+		// 	            [plan_tipodep] => 3
+		// 	            [plan_estatus] => 1
+		// 	            [plan_zona] => 
+		// 	            [plan_clase] => 
+		// 	            [plan_categoria] => 
+		// 	            [plan_fechafundada] => 1880-01-01
+		// 	            [plan_condicionestudio] => 1
+		// 	            [plan_tipomatricula] => 3
+		// 	            [plan_turno] => 2
+		// 	            [plan_modalidad] => 3
+		// 	            [plan_observacion] => 
+		// 	            [plan_director] => 11382531
+		// 	            [plan_supervisor] => 
+		// 	            [plan_pais] => 
+		// 	            [plan_estado] => 17
+		// 	            [plan_municipio] => Xu7enpgt-DrwW-Jwkf-ryxa-8HHlVlM2dFLk
+		// 	            [plan_parroquia] => 
+		// 	            [plan_ciudad] => 
+		// 	            [plan_localidad] => 
+		// 	            [plan_direccion] => CASERIO CHAGUARAMA VIA AGRICOLA PARADERO CUMANA
+		// 	            [plan_telefono] => 4266824144
+		// 	            [plan_telefono_opc] => 
+		// 	            [plan_correo_institucional] => 
+		// 	            [plan_correo] => 
+		// 	            [plan_twitter] => 
+		// 	            [plan_facebook] => 
+		// 	            [plan_createuser] => 
+		// 	            [plan_createtime] => 2016-08-01 00:00:00
+		// 	            [estado_uid] => w5BL89KV-Lt9o-ADDI-Xxfl-jwDVo0mVvnD4
+		// 	            [estado_nombre] => Sucre
+		// 	            [estado_capital] => Cumaná
+		// 	            [estado_codigo] => 17
+		// 	            [municipio_uid] => Xu7enpgt-DrwW-Jwkf-ryxa-8HHlVlM2dFLk
+		// 	            [municipio_nombre] => Mejía
+		// 	            [municipio_capital] => San Antonio del Golfo
+		// 	            [municipio_estado] => 17
+		// 	            [municipio_codigo] => 11
+		// 	            [municipio_codigo_n] => 306
+		// 	            [?column?] => --
+		// 	        )
 		$NumeroDeFilas = $Postgres->NumeroDeFilas();
 		if ($NumeroDeFilas>0) {
 			echo json_encode($dato);
 		}else{
-			echo 'false';
+			print_r('false');
 		}
 	}
 ?>
