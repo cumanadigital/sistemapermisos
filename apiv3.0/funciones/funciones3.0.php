@@ -197,7 +197,6 @@ function fecha_actual_texto(){
 	$fecha = $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
 	return $fecha;
 }
-
 //******************************************************************************************
 //**Funciones para calcular Semanas. Num - Inicio - Fin
 //******************************************************************************************
@@ -271,7 +270,6 @@ function get_week($date)
  * @example get_week_start($fecha)
  * @return {String} 2013-05-13   -- Este equivale al dia lunes 
  */
-
  function semana_fin(){
 	if(PHP_OS=="Linux"){
 		return 0;
@@ -347,7 +345,7 @@ function WeekToDatoEnd($week, $year)
     $sEndDate = date ("Y-m-d", $sStartTS + (6*24*60*60));
     return $sEndDate;
 }
-
+// 
 function Obtener_Mes_Desde_NumSemana($week,$year){
 	$sStartTS = WeekToDate ($week, $year);					// 2013W23
 	$sStartDate = date ("Y-m-d", $sStartTS);				//Primer dia de la semana 
@@ -369,15 +367,13 @@ function Obtener_Mes_Desde_NumSemana($week,$year){
 	if ($c>=4 && $mon==$mon2) { $mes = $mon ; } //diciembre
 	return $mes;
 }
-
-
+// 
 function Obtener_PrimerDia_Desde_NumSemana($week,$year){
 	$sStartTS = WeekToDate ($week, $year);					// 2013W23
 	$sStartDate = date ("d", $sStartTS);				//Primer dia de la semana
 	return $sStartDate;
 }
-
-
+// 
 //function SumarDiasMysql($fecha,$dias)
 //{   list($year,$mon,$day) = explode('-',$fecha);
 //    return date('Y-m-d',mktime(0,0,0,$mon,$days+$dia,$year));
