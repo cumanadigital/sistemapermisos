@@ -6,7 +6,7 @@ class Postgres {
     public  $contrasena="";
     public  $bd="";
     public  $query="";
-    
+    // 
     public function __construct ($servidor, $base, $user, $pass) {
         $this->servidor = $servidor;
         $this->bd = $base;
@@ -14,17 +14,17 @@ class Postgres {
         $this->contrasena = $pass;
         $this->Conectar();
     }
-    
+    // 
     public function Conectar () {
         if(!($this->conexion = pg_connect("host=$this->servidor dbname=$this->bd user=$this->usuario password=$this->contrasena")))
             {echo "ERROR al intentar conectar a la base de datos...";}
         //return $this->conexion;
     }
-    
+    // 
     public function ObtenerCadenaConexion() {
         return "host=$this->servidor dbname=$this->bd user=$this->usuario password=***********";
     }
-    
+    // 
     public function ConsultarSql($sql){
         try {
             if($this->conexion == null) {throw new Exception("Debe establecer una conexion con la bd"); exit;}
@@ -35,10 +35,9 @@ class Postgres {
             }
         } catch (Exception $e) {
             die($e->getMessage());
-        }
-        
+        } 
     }
-    
+    // 
     public function ObtenerFilas(){
         return pg_fetch_array($this->query);
     }
@@ -46,12 +45,11 @@ class Postgres {
         return   pg_fetch_all($this->query);
 		//return pg_fetch_all($this->query);
     }
-    
-    
+    // 
     public function ObtenerFilasID(){
         return pg_fetch_row($this->query);
     }
-	
+	// 
 	function ObtenerFilasArray(){
 		$dato = "";
 		while ($fila = $this->ObtenerFilas()  ) { 
@@ -59,6 +57,7 @@ class Postgres {
 		}	
 		return $dato;
 	}
+    // 
     function ObtenerFilasArrayAll(){
         $dato = "";
         while ($fila = $this->ObtenerFilasAsoc()  ) { 
@@ -66,27 +65,24 @@ class Postgres {
         }   
         return $dato;
     }
-
+    // 
 	public function ObtenerFilasAsoc(){
         return pg_fetch_assoc($this->query);
     }
-
+    // 
     public function ObtenerFilasAsocAll(){
         return pg_fetch_assoc($this->query);
     }
-
-    
+    // 
     public function NumeroDeFilas(){
         return pg_num_rows($this->query);
     }
-    
+    // 
     public function NumeroDeFilasAfectadas(){
         return pg_affected_rows ($this->query);
     }
-    
 }
 ?>
-
 <?php 
 // function sql($sql,$Postgres){
 //     $arr_=null;
@@ -96,7 +92,7 @@ class Postgres {
 //     };
 //     return $arr_;
 // }
-
+// 
 // function sql2($sql,$Postgres){
 //     $arr_=null;
 //     $Postgres->consultar($sql);
@@ -127,12 +123,8 @@ function numresult($resultado) {
     return $number;
 }
 /*
-
  */
-
 // $Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
 // // $uid=(string) new SUID();
 // $fecha_reg=date("Y-m-d H:i:s");
-
-
 ?>
