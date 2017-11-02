@@ -1,101 +1,49 @@
-    console.log("javascript - jefedpto admin periodos");
+    console.log("javascript - jefedpto admin productos");
 
-    //var API_URL_periodos =  "servicios/services.periodos.php?accion=consultar_periodos";
-    var API_URL_periodos =  "servicios/services.admin.periodos.php?accion=consultar_periodos";
-    var API_URL =  "servicios/services.admin.periodos.php";
-    var $table = $('#table').bootstrapTable({url: API_URL_periodos});
+    var API_URL_productos =  "servicios/services.admin.productos.php?accion=consultar_productos";
     
-    $modal = $('#modal_periodos').modal({show: false});
+    var $table = $('#table').bootstrapTable({url: API_URL_productos});
+    
+    $modal = $('#modal_productos').modal({show: false});
     
     $alert = $('.alert').hide();
     
     var accion="";
-    
-    
-        
+
     $(function () {
         // create event
-        //Date range picker        
-        $('#txt_rango_fecha').daterangepicker({
-            locale: {
-              autoClose: false,
-              format: 'YYYY-MM-DD',
-              longDateFormat:'L',
-              language: 'auto',
-              separator: ' - ',
-              applyLabel: "Aplicar",
-              cancelLabel: "Cancelar",
-              fromLabel: "Desde",
-              toLabel: "Hasta"
-            }
-        });
-
-        $('#txt_fecha_recaudo').daterangepicker({
-            locale: {
-              autoClose: false,
-              format: 'YYYY-MM-DD',
-              longDateFormat:'L',
-              language: 'auto',
-              separator: ' - ',
-              applyLabel: "Aplicar",
-              cancelLabel: "Cancelar",
-              fromLabel: "Desde",
-              toLabel: "Hasta"
-            }
-        });
-
-        
-
-        //$modal.find('#btn_crear_periodo').click(function ()  {
-        //
-        //});
-        $('#btn_crear_periodo').click(function () {
-            accion ='agregar_periodos';
-            // console.log(accion)
+        $('#btn_abrir_modal').click(function () {
+            accion ='agregar_productos';
+            console.log(accion)
             showModal('Nuevo Registro');
             $modal.modal('show');
-            // marcamos el check de inactivo
-            $("#txt_radio_estatus0" ).prop("checked" , true );
-            // desabilitamos el check de activo
-            $("#txt_radio_estatus1").prop('disabled', true);
-            // cambiamos el texto del boton enviar
-            $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Periodo");
-            
-            
-            $modal.find('input[name="txt_codigo_periodo"]').val('');
-            $modal.find('input[name="txt_nombre_periodo"]').val('');
-            $modal.find('input[name="txt_rango_fecha"]').val('');
-            $modal.find('input[name="txt_fecha_inicio"]').val('');
-            $modal.find('input[name="txt_fecha_cierre"]').val('');
-
-            $modal.find('input[name="txt_fecha_recaudo"]').val('');
-            $modal.find('input[name="txt_fecha_recaudo_inicio"]').val('');
-            $modal.find('input[name="txt_fecha_recaudo_cierre"]').val('');
-
-            
+            $modal.find('button[name="btn_enviar_producto"]').text("Agregar producto");
+            $modal.find('input[name="txt_id_producto"]').val('');
+            $modal.find('input[name="txt_codigo_producto"]').val('');
+            $modal.find('input[name="txt_descripcion_producto"]').val('');
+            $modal.find('input[name="txt_medida_producto"]').val('');
+            $modal.find('input[name="txt_id_categoria"]').val('');
+            $modal.find('input[name="txt_unidades_producto"]').val('');
             //console.log(accion);
         });
         
-        $modal.find('#btn_enviar_periodo').click(function () {
-            //console.log($(this).attr('id') + " --> " +  $(this).text());    
+        $modal.find('#btn_enviar_producto').click(function () {
+            console.log($(this).attr('id') + " --> " +  $(this).text());    
             var row = {};
             var rowid = {}
             $modal.find('input[id]').each(function () {
               row[$(this).attr('name')] = $(this).val();
               rowid[$(this).attr('id')] = $(this).val();
             });
-            
-            row['txt_radio_estatus'] = $('input:radio[name=txt_radio_estatus]:checked').val();
-            row['accion'] ="agregar_periodos"
-            
+            // row['txt_radio_estatus'] = $('input:radio[name=txt_radio_estatus]:checked').val();
+            row['accion'] ="agregar_productos"
             // console.log(row);
+            var codigo_producto = $modal.find('input[name="txt_codigo_producto"]').val();
+            var descripcion_producto = $modal.find('input[name="txt_descripcion_producto"]').val();
             
-            var nombre_periodo = $modal.find('input[name="txt_nombre_periodo"]').val();
-            var rango_fecha = $modal.find('input[name="txt_rango_fecha"]').val();
-            
-            if (nombre_periodo!='' && rango_fecha!= '') {
-              parametros = $("#form_modal_periodos").serialize() + '&accion='+ accion;
-              API_URL =  "servicios/services.admin.periodos.php";
+            if (codigo_producto!='' && descripcion_producto!= '') {
+              parametros = $("#form_modal_productos").serialize() + '&accion='+ accion;
+              API_URL =  "servicios/services.admin.productos.php";
               $.ajax({
                   url: API_URL + ($modal.data('id') || ''),
                   type: 'POST',
@@ -194,28 +142,28 @@
     // update and delete events
     window.actionEvents = {
         'click .view': function (e, value, row) {
-            accion='ver_periodos'
+            accion='ver_productos'
             // console.log(row);
             // console.log($(this).attr('title'));
             showModal($(this).attr('title'), row);  
         },
         'click .update': function (e, value, row) {
-            accion='modificar_periodos'
+            accion='modificar_productos'
             //console.log(row);
             // console.log($(this).attr('title'));
             showModal($(this).attr('title'), row);  
         },
         'click .remove': function (e, value, row) {
             // console.log($(this).attr('title'));
-            accion='eliminar_periodos'
-            if (row.estatus ==1) {
-              var estatus ="Activo";
-            }else{
-              var estatus ="Inactivo";
-            }  
-            if (confirm('Esta seguro de eleminar este item? \n ' + row.nombre_periodo + ' \n ' +row.fecha_inicio + ' - ' +row.fecha_cierre + '\n ' + estatus)) {
+            accion='eliminar_productos'
+            // if (row.estatus ==1) {
+            //   var estatus ="Activo";
+            // }else{
+            //   var estatus ="Inactivo";
+            // }  
+            if (confirm('Esta seguro de elIminar este item? \n ' + row.codigo_producto + ' \n ' +row.descripcion_producto + ' - ' +row.medida_producto + '\n ' )) {
                 $.ajax({
-                    url: API_URL + '?id_periodo=' +row.id_periodo + '&accion=' + accion ,
+                    url: API_URL + '?id_producto=' +row.id_producto + '&accion=' + accion ,
                     //type: 'POST',
                     success: function () {
                         $table.bootstrapTable('refresh');
@@ -232,164 +180,67 @@
 
     function showModal(title, row) {
         row = row || {
-            id_periodo: '',
-            nombre_periodo: '',
-            //rango_fecha: '',
-            fecha_inicio:'',
-            fecha_cierre:'',
-            estatus: 0
-        }; // default row value
+            id_producto: 0,
+            txt_codigo_producto: '',
+            txt_descripcion_producto: '', 
+            txt_medida_producto: '', 
+            txt_id_categoria: 0,
+            txt_unidades_producto: 0
+        };
         // console.log(title, row);
-        console.log("row. " + row.id_periodo, accion);
+        console.log("row. " + row.id_producto, accion);
         
-        if (accion=='agregar_periodos') {
+        if (accion=='agregar_productos') {
           //code
-          // habilitamos los check - activo
           $modal.find('.modal-title').text(title);
-          $("#txt_radio_estatus0").prop("checked" , true ) 
-          $("#txt_radio_estatus0").prop('disabled', false);
-          $("#txt_radio_estatus1").prop('disabled', true);
-          //$modal.find('button[name="btn_enviar_periodo"]').text("Modificar Periodo");
-          $modal.find('button[name="btn_enviar_periodo"]').text("Agregar Periodo");
+          $modal.find('button[name="btn_enviar_producto"]').text("Agregar producto");
         }
 
-        if (accion=='ver_periodos') {
+        if (accion=='ver_productos') {
           //code
           // habilitamos los check - activo
-          $("#txt_radio_estatus0").prop('disabled', true);
-          $("#txt_radio_estatus1").prop('disabled', true);
-
-          $("#txt_nombre_periodo").attr('disabled', true);
-          $("#txt_fecha_recaudo").attr('disabled', true);
-          $("#txt_rango_fecha").attr('disabled', true);
-          
-          $("#btn_enviar_periodo").attr('disabled', true);
-          $("#btn_enviar_periodo").hide();
-
-
-          // fecha periodo
-          var fechaini =  row['fecha_inicio'].split('-');
-          var fechafin =  row['fecha_cierre'].split('-');
-          
-          var ani_ini = fechaini[0];
-          var mes_ini = fechaini[1];
-          var dia_ini = fechaini[2];
-          
-          var ani_fin = fechafin[0];
-          var mes_fin = fechafin[1];
-          var dia_fin = fechafin[2];
-          
-          var fini = mes_ini + '/' + dia_ini + '/' + ani_ini;
-          var ffin = mes_fin + '/' + dia_fin + '/' + ani_fin;
-          var rango =  fini + ' - ' + ffin;
-
-          // fecha recaudos
-          var fechaini_reca =  row['fecha_recaudo_ini'].split('-');
-          var fechafin_reca =  row['fecha_recaudo_fin'].split('-');
-          
-          var ani_ini_reca = fechaini_reca[0];
-          var mes_ini_reca = fechaini_reca[1];
-          var dia_ini_reca = fechaini_reca[2];
-          
-          var ani_fin_reca = fechafin_reca[0];
-          var mes_fin_reca = fechafin_reca[1];
-          var dia_fin_reca = fechafin_reca[2];
-          
-          var fini_reca  = mes_ini_reca + '/' + dia_ini_reca + '/' + ani_ini_reca;
-          var ffin_reca  = mes_fin_reca + '/' + dia_fin_reca + '/' + ani_fin_reca;
-          var rango_reca = fini_reca    +' - '+ ffin_reca;
-
-          // console.log(rango);
-          // console.log(rango_reca);
+         
+          $("#txt_codigo_producto").attr('disabled', true);
+          $("#txt_descripcion_producto").attr('disabled', true);
+          $("#txt_medida_producto").attr('disabled', true);
+          $("#txt_id_categoria").attr('disabled', true);
+          $("#txt_unidades_producto").attr('disabled', true);
+                   
+          $("#btn_enviar_producto").attr('disabled', true);
+          $("#btn_enviar_producto").hide();
 
           $modal.find('.modal-title').text(title);
-          $modal.find('input[name="txt_codigo_periodo"]').val(row['id_periodo']);
-          $modal.find('input[name="txt_nombre_periodo"]').val(row['nombre_periodo']);
-          
-          $modal.find('input[name="txt_rango_fecha"]').val(rango );
-          $modal.find('input[name="txt_fecha_inicio"]').val(ani_ini + '/' + mes_ini + '/' + dia_ini );
-          $modal.find('input[name="txt_fecha_cierre"]').val(ani_fin + '/' + mes_fin + '/' + dia_fin );
-
-          $modal.find('input[name="txt_fecha_recaudo"]').val(rango_reca);
-          $modal.find('input[name="txt_fecha_recaudo_inicio"]').val(ani_ini_reca + '/' + mes_ini_reca + '/' + dia_ini_reca );
-          $modal.find('input[name="txt_fecha_recaudo_cierre"]').val(ani_fin_reca + '/' + mes_fin_reca + '/' + dia_fin_reca );
-          if (row['estatus']==0){
-            $("#txt_radio_estatus0" ).prop("checked" , true )  
-          }else{
-            $("#txt_radio_estatus1" ).prop("checked" , true )
-          }
-
-          $modal.find('button[name="btn_enviar_periodo"]').text("Ver Periodo");
+          $modal.find('input[name="txt_id_producto"]').val(row['id_producto']);
+          $modal.find('input[name="txt_codigo_producto"]').val(row['codigo_producto']);
+          $modal.find('input[name="txt_descripcion_producto"]').val(row['descripcion_producto']);
+          $modal.find('input[name="txt_medida_producto"]').val(row['medida_producto']);
+          $modal.find('input[name="txt_id_categoria"]').val(row['id_categoria']);
+          $modal.find('input[name="txt_unidades_producto"]').val(row['unidades_producto']);
+          $modal.find('button[name="btn_enviar_producto"]').text("Ver producto");
           
         }
 
-        if (accion=='modificar_periodos' ) {
-          //code
-          // habilitamos los check - activo
-          $("#txt_radio_estatus0").prop('disabled', false);
-          $("#txt_radio_estatus1").prop('disabled', false);
+        if (accion=='modificar_productos' ) {
+          //code          
+          
+          $("#txt_codigo_producto").attr('disabled', false);
+          $("#txt_descripcion_producto").attr('disabled', false);
+          $("#txt_medida_producto").attr('disabled', false);
+          $("#txt_id_categoria").attr('disabled', false);
+          $("#txt_unidades_producto").attr('disabled', false);
 
-          $("#txt_nombre_periodo").attr('disabled', false);
-          $("#txt_fecha_recaudo").attr('disabled', false);
-          $("#txt_rango_fecha").attr('disabled', false);
-          
-          $("#btn_enviar_periodo").attr('disabled', false);
-          $("#btn_enviar_periodo").show();
-
-          
-          // fecha periodo
-          var fechaini =  row['fecha_inicio'].split('-');
-          var fechafin =  row['fecha_cierre'].split('-');
-          
-          var ani_ini = fechaini[0];
-          var mes_ini = fechaini[1];
-          var dia_ini = fechaini[2];
-          
-          var ani_fin = fechafin[0];
-          var mes_fin = fechafin[1];
-          var dia_fin = fechafin[2];
-          
-          var fini = mes_ini + '/' + dia_ini + '/' + ani_ini;
-          var ffin = mes_fin + '/' + dia_fin + '/' + ani_fin;
-          var rango =  fini + ' - ' + ffin;
-
-          // fecha recaudos
-          var fechaini_reca =  row['fecha_recaudo_ini'].split('-');
-          var fechafin_reca =  row['fecha_recaudo_fin'].split('-');
-          
-          var ani_ini_reca = fechaini_reca[0];
-          var mes_ini_reca = fechaini_reca[1];
-          var dia_ini_reca = fechaini_reca[2];
-          
-          var ani_fin_reca = fechafin_reca[0];
-          var mes_fin_reca = fechafin_reca[1];
-          var dia_fin_reca = fechafin_reca[2];
-          
-          var fini_reca  = mes_ini_reca + '/' + dia_ini_reca + '/' + ani_ini_reca;
-          var ffin_reca  = mes_fin_reca + '/' + dia_fin_reca + '/' + ani_fin_reca;
-          var rango_reca = fini_reca    +' - '+ ffin_reca;
-
-          // console.log(rango);
-          // console.log(rango_reca);
+          $("#btn_enviar_producto").attr('disabled', false);
+          $("#btn_enviar_producto").show();
 
           $modal.find('.modal-title').text(title);
-          $modal.find('input[name="txt_codigo_periodo"]').val(row['id_periodo']);
-          $modal.find('input[name="txt_nombre_periodo"]').val(row['nombre_periodo']);
+          $modal.find('input[name="txt_id_producto"]').val(row['id_producto']);
+          $modal.find('input[name="txt_codigo_producto"]').val(row['codigo_producto']);
+          $modal.find('input[name="txt_descripcion_producto"]').val(row['descripcion_producto']);
+          $modal.find('input[name="txt_medida_producto"]').val(row['medida_producto']);
+          $modal.find('input[name="txt_id_categoria"]').val(row['id_categoria']);
+          $modal.find('input[name="txt_unidades_producto"]').val(row['unidades_producto']);
           
-          $modal.find('input[name="txt_rango_fecha"]').val(rango );
-          $modal.find('input[name="txt_fecha_inicio"]').val(ani_ini + '/' + mes_ini + '/' + dia_ini );
-          $modal.find('input[name="txt_fecha_cierre"]').val(ani_fin + '/' + mes_fin + '/' + dia_fin );
-
-          $modal.find('input[name="txt_fecha_recaudo"]').val(rango_reca);
-          $modal.find('input[name="txt_fecha_recaudo_inicio"]').val(ani_ini_reca + '/' + mes_ini_reca + '/' + dia_ini_reca );
-          $modal.find('input[name="txt_fecha_recaudo_cierre"]').val(ani_fin_reca + '/' + mes_fin_reca + '/' + dia_fin_reca );
-          if (row['estatus']==0){
-            $("#txt_radio_estatus0" ).prop("checked" , true )  
-          }else{
-            $("#txt_radio_estatus1" ).prop("checked" , true )
-          }
-          
-          $modal.find('button[name="btn_enviar_periodo"]').text("Modificar Periodo");
+          $modal.find('button[name="btn_enviar_producto"]').text("Modificar producto");
           
         }
         
