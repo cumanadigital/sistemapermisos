@@ -1031,16 +1031,6 @@ $(document).ready(function(){
 		$('.box-danger').slideDown(timeSlide);
 		redireccion(0,10);
 	}
-
-	function showAlert(title, type) {
-        $alert.attr('class', 'alert alert-' + type || 'success')
-              .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
-        setTimeout(function () {
-            $alert.hide();
-        }, 3000);
-    }
-
-
 });
 
 function pruebafuncion2() {
