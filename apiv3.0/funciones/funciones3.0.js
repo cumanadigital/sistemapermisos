@@ -66,6 +66,21 @@ var indice = -1;
 			console.log('ocultando notificación')
 		//},timeFadeOut);
 	}
+	/*
+	 * @author Oswaldo Hernández
+	 * @description Permite mostrar mensaje de notificación que se cierra automaticamente
+	 * @param title Titulo/Valor del mensaje
+	 * @param type Tipo de diseño dle mensaje: default:success
+	 */
+	function showAlert(title, type, time) {
+		time || ( time = 20000 ); // 20 segundos
+        $alert.attr('class', 'alert alert-' + type || 'success')
+              .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
+        setTimeout(function () {
+            $alert.hide();
+        }, time);
+    }
+
 	
 	/*
 	 Retorna un mensaje preestablecido
