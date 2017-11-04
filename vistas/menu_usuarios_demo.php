@@ -44,6 +44,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
 #     # ####### #     # #     #  #####  ####### #     #
 -->
 
+<?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>ROOT</b></span></a></li>
+<?php }?>
+
 <?php if ($nivelusuario=='root' || $nivelusuario=='almacen') {?>     <!--0:Admin,-->
 <!--USUARIOS DE INFORMATICA-->
 <li class="treeview">
@@ -88,14 +92,7 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 
-<!--PERFIL DE USUARIOS-->
-<li class="treeview">
-    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
-    <ul class="treeview-menu">
-        <li id="menu_admin_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
-        <li id="menu_admin_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
-    </ul>
-</li>
+
 <?php }?>
 
 
@@ -110,7 +107,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
 //  #   #   ##  #       #    #  #   #   #    #  #    #    #    #  #    #  #    # 
 // ###  #    #  #        ####   #    #  #    #  #    #    #    #   ####   #    # 
  -->
-<?php if ($nivelusuario=='admin') {?>     <!--0:Admin,-->
+<?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>ADMIN</b></span></a></li>
+<?php }?>
+<?php if ($nivelusuario=='root' || $nivelusuario=='admin') {?>     <!--0:Admin,-->
 <!--USUARIOS DE INFORMATICA-->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Administrar</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -121,22 +121,14 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 
-<!--USUARIOS DE INFORMATICA-->
-<li class="treeview">
-    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Usuarios</span><i class="fa fa-angle-left pull-right"></i></a>
-    <ul class="treeview-menu">
-        <li id="menu_admin_usuarios"><a href="javascript:void(0);"><i class="fa fa-users"></i> <span>Gestionar</span></a></li>
-    </ul>
-</li>
-
 <!--PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_admin_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_admin_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
     </ul>
-</li>
+</li> -->
 <?php }?>
 
 
@@ -149,8 +141,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
  #     #  #        #        #            #     #  #            #        #        #    #   #     #  #     #  #    ##  #     #  #       
   #####   #######  #        #######      ######   #######      #        #######  #     #   #####   #######  #     #  #     #  ####### 
   -->                                                                                                                                     
-
-<?php if ($nivelusuario=='personal') {?>     <!--1:Jefe Dpto de Personal,-->
+<?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>PERSONAL</b></span></a></li>
+<?php }?>
+<?php if ($nivelusuario=='root' || $nivelusuario=='personal') {?>     <!--1:Jefe Dpto de Personal,-->
 <!--MODULO XXXX -->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Permisos</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -170,13 +164,13 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 <!--PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_jefe_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_jefe_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
     </ul>
-</li>
+</li> -->
 <?php }?>
 
 
@@ -189,7 +183,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
 // #     #  #        #     #  #    #   ###      #        #        #    #   #     #  #     #  #    ##  #     #  #       
 //  #####   #######   #####   #     #  ###      #        #######  #     #   #####   #######  #     #  #     #  ####### 
  -->
-<?php if ($nivelusuario=='secretaria') {?>     <!--1:Secretaria,-->
+ <?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>SECRETARIA</b></span></a></li>
+<?php }?>
+<?php if ($nivelusuario=='root' || $nivelusuario=='secretaria') {?>     <!--1:Secretaria,-->
 <!--MODULO XXXX -->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Permisos</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -242,13 +239,13 @@ $cargousuario = $_SESSION["sesion_cargo"];
 </li>
 <!--PERFIL DE USUARIOS
     PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_secre_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_secre_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
     </ul>
-</li>
+</li> -->
 <?php }?>
 
 <!-- 
@@ -260,7 +257,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
 // #     #  #     #  #    #    #   #     #   #   #     #  #     # 
 //  #####    #####   #     #  ###  ######   ###   #####   #     # 
  -->
-<?php if ($nivelusuario=='juridica') {?>     <!--1:Asesoría Jurídica,-->
+ <?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>JURIDICA</b></span></a></li>
+<?php }?>
+<?php if ($nivelusuario=='root' || $nivelusuario=='juridica') {?>     <!--1:Asesoría Jurídica,-->
 <!--MODULO XXXX -->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Permisos</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -272,13 +272,13 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 <!--PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_juridica_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_juridica_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
     </ul>
-</li>
+</li> -->
 <?php }?>
 
 <!-- 
@@ -289,7 +289,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
  // #    #  #       #       #           #  #   ##  #    #  #       #    #  #  #    #    #    #    # 
  //  ####   ######  #       ######      #  #    #  #    #  ######  #####   #  #    #    #     ####  
  -->
- <?php if ($nivelusuario=='jefeinmediato' || $nivelusuario=='director') {?>     <!--1:Jefe Inmediato - Director,-->
+ <?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>DIRECTOR</b></span></a></li>
+<?php }?>
+ <?php if ($nivelusuario=='root' || $nivelusuario=='jefeinmediato' || $nivelusuario=='director') {?>     <!--1:Jefe Inmediato - Director,-->
 <!--MODULO XXXX -->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Permisos</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -315,13 +318,13 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 <!--PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_director_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_director_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
     </ul>
-</li>
+</li> -->
 <?php }?>
 
 <!-- 
@@ -333,7 +336,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
 // #     #   #   #        #    ##  #        #     #     #     #     #  #    #  
 // ######   ###  #######  #     #  #######   #####      #     #     #  #     # 
  -->
-<?php if ($nivelusuario=='bienestar') {?>     <!--1:Jefe Dpto,-->
+ <?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>BIENESTAR</b></span></a></li>
+<?php }?>
+<?php if ($nivelusuario=='root' || $nivelusuario=='bienestar') {?>     <!--1:Jefe Dpto,-->
 <!--MODULO XXXX -->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Denuncias</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -355,13 +361,13 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li>
 <!--PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_bienestar_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_bienestar_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
     </ul>
-</li>
+</li> -->
 <?php }?>
 
 <!-- 
@@ -373,7 +379,10 @@ $cargousuario = $_SESSION["sesion_cargo"];
 // #         #   #     #  #        #    ##  #     #   #   #     # 
 // #######  ###   #####   #######  #     #   #####   ###  #     # 
  -->
-<?php if ($nivelusuario=='licencia') {?>     <!--1:Jefe Dpto,-->
+ <?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>LICENCIAS</b></span></a></li>
+<?php }?>
+<?php if ($nivelusuario=='root' || $nivelusuario=='licencia') {?>     <!--1:Jefe Dpto,-->
 <!--MODULO XXXX -->
 <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Licencias</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -395,17 +404,66 @@ $cargousuario = $_SESSION["sesion_cargo"];
     </ul>
 </li> -->
 <!--PERFIL DE USUARIOS-->
-<li class="treeview">
+<!-- <li class="treeview">
     <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li id="menu_licencia_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
         <li id="menu_licencia_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
+    </ul>
+</li> -->
+<?php }?>
+<!-- 
+######  ####### ######  ####### ### #
+#     # #       #     # #        #  #
+#     # #       #     # #        #  #
+######  #####   ######  #####    #  #
+#       #       #   #   #        #  #
+#       #       #    #  #        #  #
+#       ####### #     # #       ### #######
+######  #######
+#     # #
+#     # #
+#     # #####
+#     # #
+#     # #
+######  #######
+#     #  #####  #     #    #    ######  ### #######  #####
+#     # #     # #     #   # #   #     #  #  #     # #     #
+#     # #       #     #  #   #  #     #  #  #     # #
+#     #  #####  #     # #     # ######   #  #     #  #####
+#     #       # #     # ####### #   #    #  #     #       #
+#     # #     # #     # #     # #    #   #  #     # #     #
+ #####   #####   #####  #     # #     # ### #######  #####
+ -->
+
+<?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>INFORMATICA</b></span></a></li>
+<?php }?>
+
+
+<?php if ($nivelusuario=='root' ) {?>
+<!--USUARIOS DE INFORMATICA-->
+<li class="treeview">
+    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Usuarios</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li id="menu_admin_usuarios"><a href="javascript:void(0);"><i class="fa fa-users"></i> <span>Gestionar</span></a></li>
     </ul>
 </li>
 <?php }?>
 
 
 
+<?php if ($nivelusuario=='root' ) {?>
+<li><a href="#"><i class="fa fa-user text-yellow"></i> <span><b>GENERAL</b></span></a></li>
+<?php }?>
+<!--PERFIL DE USUARIOS-->
+<li class="treeview">
+    <a href="javascript:void(0);"><i class="fa fa-file"></i> <span>Mi Perfil</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li id="menu_admin_perfil"><a href="javascript:void(0);"><i class="fa fa-file-o"></i> <span>Cambiar Contraseña</span></a></li>
+        <li id="menu_admin_perfil_foto"><a href="javascript:void(0);"><i class="fa fa-camera"></i> <span>Actualizar Foto</span></a></li>
+    </ul>
+</li>
 
 
 <?php //ver_arreglo($_SESSION);?>
