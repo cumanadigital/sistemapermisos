@@ -2,7 +2,7 @@
 	// NOTA: Esta enlazado con postgres
 	// require('../conf/config.postgres.php');
 	// require('../apiv3.0/funciones/postgres.class.php');
-
+	//
 	// NOTA: Esta enlazado con mysql
 	// require('../conf/config.login.php');
 	// require('../apiv3.0/funciones/mysql.class.php'); 
@@ -27,22 +27,22 @@
 	if ($_GET){
 		$datos=$_GET;	
 	}
-	//Array
-	//(
-	//		[txt_codigo_producto] => 
-	//		[txt_nombre_producto] => producto nnn
-	//		[txt_rango_fecha] => 01/09/2016 - 01/10/2016
-	//		[txt_fecha_inicio] => 
-	//		[txt_fecha_cierre] => 
-	//		[txt_radio_estatus] => 0
-	//		[accion] => agregar_productos
-	//		[token1] => 4f3:;EB15E360;¡BB!c1
-	//)
-	//	
 	//ver_arreglo($_SESSION);
 	//echo 'datos';
 	//ver_arreglo($datos);
 	//die();
+	// Array
+	// (
+	//     [txt_id_producto] => 
+	//     [txt_codigo_producto] => codigo
+	//     [txt_descripcion_producto] => Descripción
+	//     [txt_medida_producto] => Medida
+	//     [txt_id_categoria] => id_categoria
+	//     [txt_unidades_producto] => Unidades
+	//     [accion] => agregar_productos
+	//     [token1] => ?B5A?20D7CB46d:a75B2
+	// )
+	// 
 	$fecha_registro = date("Y/m/d h:i:s");
 	$accion					=	$datos['accion']; //	agregar_productos"
 	switch ($accion){
@@ -113,37 +113,26 @@
 	function agregar_productos($datos) {
 		// INICIA LA CONEXION CON EL SERVIDOR 
 		$Postgres=new Postgres(DB_SERVER,DB_NAME,DB_USER,DB_PASSWORD);
-			// Array
-			// (
-			//     [txt_id_producto] => 
-			//     [txt_codigo_producto] => codigo
-			//     [txt_descripcion_producto] => Descripción
-			//     [txt_medida_producto] => Medida
-			//     [txt_id_categoria] => id_categoria
-			//     [txt_unidades_producto] => Unidades
-			//     [accion] => agregar_productos
-			//     [token1] => ?B5A?20D7CB46d:a75B2
-			// )
-
-			$txt_id_producto			=	$datos['txt_id_producto']; //
-			$txt_codigo_producto		=	$datos['txt_codigo_producto']; //
-			$txt_descripcion_producto	=	$datos['txt_descripcion_producto']; //	oswaldo",
-			$txt_medida_producto		=	$datos['txt_medida_producto']; //
-			$txt_id_categoria			=	$datos['txt_id_categoria']; //
-			$txt_unidades_producto		=	$datos['txt_unidades_producto']; //
-			$numero_solicitud = uniqid();
-			// CONSULTA SQL A GENERAR
-			$sql =		"INSERT INTO almacen.productos
-									(	codigo_producto, 
-            							descripcion_producto, 
-            							medida_producto, 
-            							id_categoria,
-            							unidades_producto )
-					    VALUES (		'$txt_codigo_producto', 
-            							'$txt_descripcion_producto', 
-            							'$txt_medida_producto', 
-            							$txt_id_categoria,
-            							$txt_unidades_producto );";
+		// PARAMETROS DEL FORMULARIO
+		$txt_id_producto			=	$datos['txt_id_producto']; //
+		$txt_codigo_producto		=	$datos['txt_codigo_producto']; //
+		$txt_descripcion_producto	=	$datos['txt_descripcion_producto']; //	oswaldo",
+		$txt_medida_producto		=	$datos['txt_medida_producto']; //
+		$txt_id_categoria			=	$datos['txt_id_categoria']; //
+		$txt_unidades_producto		=	$datos['txt_unidades_producto']; //
+		$numero_solicitud = uniqid();
+		// CONSULTA SQL A GENERAR
+		$sql =		"INSERT INTO almacen.productos
+								(	codigo_producto, 
+        							descripcion_producto, 
+        							medida_producto, 
+        							id_categoria,
+        							unidades_producto )
+				    VALUES (		'$txt_codigo_producto', 
+        							'$txt_descripcion_producto', 
+        							'$txt_medida_producto', 
+        							$txt_id_categoria,
+        							$txt_unidades_producto );";
 		$dato=consultar($sql,$Postgres);
 		$NumeroDeFilas = $Postgres->NumeroDeFilasAfectadas();
 		if ($NumeroDeFilas>0) {
