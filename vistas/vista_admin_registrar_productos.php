@@ -38,6 +38,8 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                     data-pagination="true"
                     data-query-params="queryParams"
                     data-filter-control="true"
+                    data-page-size="5"
+                    data-page-list="[5,10,25,50,100]"
                     data-toolbar="#toolbar1"
               >
                 <thead>
