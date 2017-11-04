@@ -37,17 +37,18 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                     data-search="true"
                     data-pagination="true"
                     data-query-params="queryParams"
+                    data-filter-control="true"
                     data-toolbar="#toolbar1"
               >
                 <thead>
                   <tr>
                    <!--<th data-field="state" data-checkbox="true"></th>-->
-                   <th data-field="id_producto" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Id</th>
-                   <th data-field="codigo_producto" data-filter-control="select" data-sortable="true" data-halign="center" data-align="center"  >Código</th>
-                   <th data-field="descripcion_producto" data-filter-control="select" data-sortable="true" data-halign="center"  >Descripción</th>                   
-                   <th data-field="medida_producto" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Medida</th>
-                   <th data-field="nombre_categoria" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center"  >Categoria</th>
-                   <th data-field="unidades_producto" data-filter-control="select" data-sortable="false" data-halign="center" data-align="center" >Unidades</th>
+                   <th data-field="id_producto" data-filter-control="input" data-sortable="true" data-halign="center" data-align="center"  >Id</th>
+                   <th data-field="codigo_producto" data-filter-control="input" data-sortable="true" data-halign="center" data-align="center"  >Código</th>
+                   <th data-field="descripcion_producto" data-filter-control="input" data-sortable="true" data-halign="center"  >Descripción</th>                   
+                   <th data-field="medida_producto" data-filter-control="select" data-sortable="true" data-halign="center" data-align="center"  >Medida</th>
+                   <th data-field="nombre_categoria" data-filter-control="select" data-sortable="true" data-halign="center" data-align="center"  >Categoria</th>
+                   <th data-field="unidades_producto" data-filter-control="select" data-sortable="true" data-halign="center" data-align="center" >Unidades</th>
                    <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Acción</th>
                  </tr>
                 </thead>
@@ -136,3 +137,4 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
 <!--...javascript AQUI-->
 <script src="apiv3.0/plugins/bootstrap-table/bootstrap-table.js"></script>
 <script src="apiv3.0/plugins/bootstrap-table/locale/bootstrap-table-es-SP.js"></script>
+<script src="apiv3.0/plugins/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.js"></script>

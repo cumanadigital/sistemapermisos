@@ -11,15 +11,6 @@
 <?php require('../apiv3.0/funciones/postgres.class.php'); ?>
 <?php require('../apiv3.0/funciones/funciones3.0.php'); ?>
 <?php
-//{"txt_codigo_producto":"","txt_nombre_producto":"oswaldo","txt_rango_fecha":"01/07/2016 - 01/09/2016","txt_fecha_inicio":"","txt_fecha_cierre":"","txt_radio_estatus":"0","accion":"agregar_productos"}
-	//echo DB_SERVER. "<br>";
-	//echo DB_NAME. "<br>";
-	//echo DB_USER. "<br>";
-	//echo DB_PASSWORD. "<br>";
-	//echo DB_DRIVER. "<br>";	
-	//echo "Desde servicios: ".getcwd() . "\n";
-	//sleep(2);
-	//ver_arreglo($_POST);
 	$datos = array();
 	if ($_POST){
 		$datos=$_POST;	
@@ -27,8 +18,6 @@
 	if ($_GET){
 		$datos=$_GET;	
 	}
-	//ver_arreglo($_SESSION);
-	//echo 'datos';
 	//ver_arreglo($datos);
 	//die();
 	// Array
@@ -76,7 +65,7 @@
        					cat.descripcion_categoria
 				FROM almacen.productos as prod
 				INNER JOIN almacen.categoria AS cat ON cat.id_categoria = prod.id_categoria
-				ORDER BY prod.id_producto";
+				ORDER BY prod.id_producto desc";
 		$dato=consultar($sql,$Postgres);
 		$NumeroDeFilas = $Postgres->NumeroDeFilas();
 		if ($NumeroDeFilas>0) {

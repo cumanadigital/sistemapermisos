@@ -14,7 +14,7 @@
         // create event
         $('#btn_abrir_modal').click(function () {
             accion ='agregar_productos';
-            console.log(accion)
+            // console.log(accion)
             showModal('Nuevo Registro');
             $modal.modal('show');
             $modal.find('button[name="btn_enviar_producto"]').text("Agregar producto");
@@ -24,20 +24,18 @@
             $modal.find('input[name="txt_medida_producto"]').val('');
             $modal.find('input[name="txt_id_categoria"]').val('');
             $modal.find('input[name="txt_unidades_producto"]').val('');
-            //console.log(accion);
         });
         
         $modal.find('#btn_enviar_producto').click(function () {
             console.log($(this).attr('id') + " --> " +  $(this).text());    
-            var row = {};
-            var rowid = {}
-            $modal.find('input[id]').each(function () {
-              row[$(this).attr('name')] = $(this).val();
-              rowid[$(this).attr('id')] = $(this).val();
-            });
-            // row['txt_radio_estatus'] = $('input:radio[name=txt_radio_estatus]:checked').val();
-            row['accion'] ="agregar_productos"
-            // console.log(row);
+            // var row = {};
+            // var rowid = {}
+            // $modal.find('input[id]').each(function () {
+            //   row[$(this).attr('name')] = $(this).val();
+            //   rowid[$(this).attr('id')] = $(this).val();
+            // });
+            // // row['txt_radio_estatus'] = $('input:radio[name=txt_radio_estatus]:checked').val();
+            // row['accion'] ="agregar_productos"
             var codigo_producto = $modal.find('input[name="txt_codigo_producto"]').val();
             var descripcion_producto = $modal.find('input[name="txt_descripcion_producto"]').val();
             
@@ -54,90 +52,40 @@
                       $modal.modal('hide');
                       showAlert('Registro con éxito!', 'success');
                       $table.bootstrapTable('refresh');
-                      // console.log(response);
-                      //console.log(data);
-                      //showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item successful!', 'success');
-                      //var result = append(data).html();
-                      //$('#showresults').html(result);
                   },
                   error: function () {
                       $modal.modal('hide');
                       showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item error!', 'danger');
                   }
               });
-                
             }else{
               alert("Debe ingresar los datos");
             }
-            
-            //for (var name in row) {
-              //console.log('input[name="' + name + '"]').val(row[name]);
-            //  $modal.find('input[name="' + name + '"]').val(row[name]);
-            //}
-            
         });
-      
     });
-    //toolbar1
 
-    function queryParams(params) {
-        return {};
-    }
+    // function queryParams(params) {
+    //     return {};
+    // }
 
     function actionFormatter(value,row) {
-      // console.info(row); 
         return [
             '<a class="view" href="javascript:" title="Ver Registro"><i class="glyphicon glyphicon-view glyphicon-eye-open"></i></a>  ',
             '<a class="update" href="javascript:" title="Modificar Registro"><i class="glyphicon glyphicon-warning glyphicon-edit"></i></a>  ',
             ' <a class="remove" href="javascript:" title="Eliminar Registro"><i class="glyphicon glyphicon-error glyphicon-remove-circle"></i></a>',
         ].join('');
     }
-
-    function actionFormatter_111(value,row) {
-        return [
-            '<div class="btn-group">',
-            '  <button type="button" class="btn btn-default">Action</button>',
-            '  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">',
-            '    <span class="caret"></span>',
-            '    <span class="sr-only">Toggle Dropdown</span>',
-            '  </button>',
-            '  <ul class="dropdown-menu" role="menu">',
-            '    <li><a href="#">Action</a></li>',
-            '    <li><a href="#">Another action</a></li>',
-            '    <li><a href="#">Something else here</a></li>',
-            '    <li class="divider"></li>',
-            '    <li><a href="#">Separated link</a></li>',
-            '  </ul>',
-            '</div>'
-        ].join('');
-    }
     
-
-            // '<li class="dropdown open">
-            //   <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
-            //     Dropdown <span class="caret"></span>
-            //   </a>
-            //   <ul class="dropdown-menu">
-            //     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-            //     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            //     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-            //     <li role="presentation" class="divider"></li>
-            //     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-            //   </ul>
-            // </li>'
-    
-    function StatusFormatter(value, row) {
-        var icon = "";
-        //console.log(row.estatus);
-        if (row.estatus == 1 ) {
-          icon = '<span class="pull-center badge bg-green">Activo</span>';
-        }else{
-          icon ='<span class="pull-center badge bg-red">Inactivo</span>';
-        }
-        //return '<i class="glyphicon ' + icon + '"></i> ' + row.estatus;
-        //return row.estatus;
-        return icon;
-    }
+    // function StatusFormatter(value, row) {
+    //     var icon = "";
+    //     //console.log(row.estatus);
+    //     if (row.estatus == 1 ) {
+    //       icon = '<span class="pull-center badge bg-green">Activo</span>';
+    //     }else{
+    //       icon ='<span class="pull-center badge bg-red">Inactivo</span>';
+    //     }
+    //     return icon;
+    // }
     
     // update and delete events
     window.actionEvents = {
