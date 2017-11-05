@@ -95,9 +95,11 @@ require_once('../apiv3.0/funciones/funciones3.0.php');
                         </div>
 
                         <div class="form-group">
-                          <label for="txt_id_categoria" class="col-sm-3 control-label">id_categoria</label>
+                          <label for="txt_id_categoria" class="col-sm-3 control-label">Categoria</label>
                           <div class="col-sm-9">
-                            <input class="form-control" id="txt_id_categoria" type="text"   name="txt_id_categoria" placeholder="Ingrese Categoria" >
+                            <!-- <input class="form-control" id="txt_id_categoria" type="text"   name="txt_id_categoria" placeholder="Ingrese Categoria" > -->
+                            <select class="form-control" id="txt_id_categoria" name="txt_id_categoria" >
+                            </select>
                           </div>
                         </div>
 
