@@ -5,10 +5,14 @@
     var $table = $('#table').bootstrapTable({url: API_URL_productos});
     
     $modal = $('#modal_productos').modal({show: false});
+
+    var txt_id_categoria       = $("#txt_id_categoria");
     
     $alert = $('.alert').hide();
     
     var accion="";
+
+    Cargar_Combo_Categoria();
 
     $(function () {
         // create event
@@ -22,8 +26,13 @@
             $modal.find('input[name="txt_codigo_producto"]').val('');
             $modal.find('input[name="txt_descripcion_producto"]').val('');
             $modal.find('input[name="txt_medida_producto"]').val('');
-            $modal.find('input[name="txt_id_categoria"]').val('');
+            
+            // $modal.find('input[name="txt_id_categoria"]').val('');
+            $("#txt_id_categoria").val('');
+
             $modal.find('input[name="txt_unidades_producto"]').val('');
+
+
         });
         
         $modal.find('#btn_enviar_producto').click(function () {
@@ -67,6 +76,32 @@
     // function queryParams(params) {
     //     return {};
     // }
+    // 
+    function Cargar_Combo_Categoria(){
+        // Limpiamos el contenido del select tipos de permisos
+        txt_id_categoria.empty();
+        txt_id_categoria.append("<option value=''>Seleccione</option>");
+        // txt_id_categoria.append("<optgroup label='Permisos Obligatorios'>");
+        // 
+        //CARGAR SELECT
+        var accion = "consultar_categorias";
+        var tipo_personal = '1'; // 1-administrativo 2-docente 3-obrero
+        var tipo_usuario = 'root';
+        $.ajax({
+            type: "GET",
+            url: "servicios/services.admin.categorias.php",
+            data: "&accion=" + accion + "&tipo_personal=" + tipo_personal + "&tipo_usuario=" + tipo_usuario + "&token1="+rand_code(),
+            success: function(response)
+            {
+              // console.log(response);
+              var arreglo_categorias = JSON.parse(response);
+              $.each(arreglo_categorias, function(i,item){
+                  txt_id_categoria.append("<option value='"+item.id_categoria+"' >" + item.nombre_categoria + "</option>");
+              })
+            }
+        });
+    }
+
 
     function actionFormatter(value,row) {
         return [
@@ -103,12 +138,7 @@
         },
         'click .remove': function (e, value, row) {
             // console.log($(this).attr('title'));
-            accion='eliminar_productos'
-            // if (row.estatus ==1) {
-            //   var estatus ="Activo";
-            // }else{
-            //   var estatus ="Inactivo";
-            // }  
+            accion='eliminar_productos' 
             if (confirm('Esta seguro de elIminar este item? \n ' + row.codigo_producto + ' \n ' +row.descripcion_producto + ' - ' +row.medida_producto + '\n ' )) {
                 $.ajax({
                     url: API_URL + '?id_producto=' +row.id_producto + '&accion=' + accion ,
@@ -129,14 +159,17 @@
     function showModal(title, row) {
         row = row || {
             id_producto: 0,
-            txt_codigo_producto: '',
-            txt_descripcion_producto: '', 
-            txt_medida_producto: '', 
-            txt_id_categoria: 0,
-            txt_unidades_producto: 0
+            codigo_producto: '',
+            descripcion_producto: '', 
+            medida_producto: '', 
+            id_categoria: 0,
+            unidades_producto: 0
         };
-        // console.log(title, row);
-        console.log("row. " + row.id_producto, accion);
+        console.log(title, row);
+        // console.log("row. " + row.id_producto, accion);
+        console.info(row.id_categoria);
+        //Llenamos el Select
+        
         
         if (accion=='agregar_productos') {
           //code
@@ -162,7 +195,10 @@
           $modal.find('input[name="txt_codigo_producto"]').val(row['codigo_producto']);
           $modal.find('input[name="txt_descripcion_producto"]').val(row['descripcion_producto']);
           $modal.find('input[name="txt_medida_producto"]').val(row['medida_producto']);
-          $modal.find('input[name="txt_id_categoria"]').val(row['id_categoria']);
+          
+          // $modal.find('input[name="txt_id_categoria"]').val(row['id_categoria']);
+          $("#txt_id_categoria").val(row['id_categoria']);
+          
           $modal.find('input[name="txt_unidades_producto"]').val(row['unidades_producto']);
           $modal.find('button[name="btn_enviar_producto"]').text("Ver producto");
           
@@ -185,7 +221,10 @@
           $modal.find('input[name="txt_codigo_producto"]').val(row['codigo_producto']);
           $modal.find('input[name="txt_descripcion_producto"]').val(row['descripcion_producto']);
           $modal.find('input[name="txt_medida_producto"]').val(row['medida_producto']);
-          $modal.find('input[name="txt_id_categoria"]').val(row['id_categoria']);
+          
+          // $modal.find('input[name="txt_id_categoria"]').val(row['id_categoria']);
+          $("#txt_id_categoria").val(row['id_categoria']);
+          
           $modal.find('input[name="txt_unidades_producto"]').val(row['unidades_producto']);
           
           $modal.find('button[name="btn_enviar_producto"]').text("Modificar producto");
