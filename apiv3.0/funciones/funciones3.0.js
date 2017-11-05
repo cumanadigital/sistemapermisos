@@ -72,8 +72,8 @@ var indice = -1;
 	 * @param title Titulo/Valor del mensaje
 	 * @param type Tipo de diseño dle mensaje: default:success
 	 */
-	function showAlert(title, type, time) {
-		time || ( time = 20000 ); // 20 segundos
+	function showAlert(title, type) {
+		time = 10000; // 20 segundos
         $alert.attr('class', 'alert alert-' + type || 'success')
               .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
         setTimeout(function () {
